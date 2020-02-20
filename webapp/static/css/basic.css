@@ -1,0 +1,202 @@
+.home-box {
+    background-color: #005B94;
+    border-radius: 25px;
+    padding: 10px;
+    width:75%;
+    margin-top: 100px;
+    vertical-align: middle;
+}
+.plugin-box {
+    border-radius: 25px;
+    background-color: #005B94;
+    padding: 15px;
+    width: 135px;
+    height: 210px;
+    margin-bottom: 25px;
+}
+.plugin-box a {
+    color: #CFDEEA;
+}
+.plugin-box hr {
+    margin: 10px -10px 10px;
+    border: 0;
+    border-top: 5px solid #333;
+}
+.plugin-box button {
+    width: 75px;
+    margin-top: 0;
+    border-radius: 25px;
+}
+
+.vendorlogo-results
+{
+    max-width:95%;
+    max-height:90%;
+}
+
+.EvalCard-results
+{
+    transition: all .5s ease;
+    height: 310px;
+    width: 310px;
+    background-size: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 20px;
+    float: left;
+    border: 3px solid lightgray;
+    background-color: white;
+    border-radius: 10px;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+.btngroup-margin
+{
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+.hoverpointer 
+{
+    cursor: pointer;
+}
+
+.divOperationalFlow-tacticsummary
+{
+/*background-color: #00334f;*/
+background-color: #FFFFFF;
+
+margin-top: 15px;
+
+position: sticky;
+right: 20px;
+/*top: 100px;*/
+top: 90px;
+
+max-width: 400px;
+max-height: 600px;
+
+overflow: auto;
+padding: 10px;
+}
+
+
+/* The sidebar menu */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+.chartWrapper {
+ position: relative;
+}
+
+.chartWrapper > canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+
+.chartAreaWrapper {
+  width: 600px;
+  overflow-x: scroll;
+}
+
+
+.missingTechniquesView
+{
+/*background-color: #00334f;*/
+background-color: #FFFFFF;
+border: 2px solid gray;
+
+position: sticky;
+right: 20px;
+/*top: 100px;*/
+top: 90px;
+
+max-width: 400px;
+height: 90vh;
+
+overflow: auto;
+padding: 10px;
+}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <br>
+    <h4>Evaluations</h4>
+        <select onchange="location = this.value;" class="selectpicker">
+            <option selected disabled >Select An Evaluation</option>
+            <optgroup label="APT3">
+            {% for eval in evaluations.APT3 %}
+                <option data-subtext="{{eval.apt}}" value="/results/APT3/{{eval.vendor}}">{{eval.vendor}}</option>
+              {% endfor %}
+            </optgroup>
+            <optgroup label="APT29">
+              <option data-divider="true"></option>
+                {% for eval in evaluations.APT29 %}
+                <option data-subtext="{{eval.apt}}" value="/results/APT29/{{eval.vendor}}">{{eval.vendor}}</option>
+              {% endfor %}
+            </optgroup>
+        </select>
+        <hr>
+    </nav>
+
+        <main id="mainContentSection" role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+            <h3>{{apt}} - {{vendor}}</h3>
+            <hr>
+            <div class="row"><canvas id="myChart"></canvas></div>
+            <div class="row"><canvas id="canvas"></canvas></div>
+        <hr>
+            <div class="row">
+                <div class="col-sm">
+                    None
+                    <div class="row"><canvas width="600" height="300" id="donutChart"></canvas></div>
+                </div>
+                <div class="col-sm">
+                    Telemetry
+                    <div class="row"><canvas width="600" height="300" id="donutChart2"></canvas></div>
+                </div>
+                <div class="col-sm">
+                    General
+                    <div class="row"><canvas width="600" height="300" id="donutChart3"></canvas></div>
+                </div>
+                <div class="col-sm">
+                    Technique
+                    <div class="row"><canvas width="600" height="300" id="donutChart4"></canvas></div>
+                </div>
+                <div class="col-sm">
+                    Tactic
+                    <div class="row"><canvas width="600" height="300" id="donutChart5"></canvas></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,2181 @@
+{
+    "Round": "1",
+    "Steps": [
+        {
+            "Substep": "1.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1204",
+                    "TechniqueName": "User Execution"
+                }
+            ],
+            "Procedure": "Legitimate user Debbie clicked and executed malicious self-extracting archive (Resume Viewer.exe) on 10.0.1.6 (Nimda)"
+        },
+        {
+            "Substep": "1.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1085",
+                    "TechniqueName": "Rundll32"
+                }
+            ],
+            "Procedure": "Previously executed batch file (pdfhelper.cmd) launched a DLL payload (update.dat) using Rundll32"
+        },
+        {
+            "Substep": "1.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1064",
+                    "TechniqueName": "Scripting"
+                }
+            ],
+            "Procedure": "Previously executed self-extracting archive (Resume Viewer.exe) launched an embedded batch file (pdfhelper.cmd)"
+        },
+        {
+            "Substep": "1.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1060",
+                    "TechniqueName": "Registry Run Keys / Startup Folder"
+                }
+            ],
+            "Procedure": "Previously executed batch file (pdfhelper.cmd) moved a separate batch file (autoupdate.bat) to the Startup folder"
+        },
+        {
+            "Substep": "1.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1043",
+                    "TechniqueName": "Commonly Used Port"
+                }
+            ],
+            "Procedure": "Cobalt Strike: C2 channel established using port 53"
+        },
+        {
+            "Substep": "1.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1071",
+                    "TechniqueName": "Standard Application Layer Protocol"
+                }
+            ],
+            "Procedure": "Cobalt Strike: C2 channel established using DNS traffic to freegoogleadsenseinfo.com"
+        },
+        {
+            "Substep": "1.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1132",
+                    "TechniqueName": "Data Encoding"
+                }
+            ],
+            "Procedure": "Cobalt Strike: C2 channel established using both NetBIOS and base64 encoding"
+        },
+        {
+            "Substep": "2.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1016",
+                    "TechniqueName": "System Network Configuration Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'ipconfig -all' via cmd"
+        },
+        {
+            "Substep": "2.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1016",
+                    "TechniqueName": "System Network Configuration Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'arp -a' via cmd"
+        },
+        {
+            "Substep": "2.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1033",
+                    "TechniqueName": "System Owner/User Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'echo' via cmd to enumerate specific environment variables"
+        },
+        {
+            "Substep": "2.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1057",
+                    "TechniqueName": "Process Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'ps' (Process status) via Win32 APIs"
+        },
+        {
+            "Substep": "2.C.2 ",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1057",
+                    "TechniqueName": "Process Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'tasklist -v' via cmd"
+        },
+        {
+            "Substep": "2.D.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1007",
+                    "TechniqueName": "System Service Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'sc query' via cmd"
+        },
+        {
+            "Substep": "2.D.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1007",
+                    "TechniqueName": "System Service Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'net start' via cmd"
+        },
+        {
+            "Substep": "2.E.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1082",
+                    "TechniqueName": "System Information Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'systeminfo' via cmd"
+        },
+        {
+            "Substep": "2.E.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1082",
+                    "TechniqueName": "System Information Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'net config workstation' via cmd"
+        },
+        {
+            "Substep": "2.F.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1069",
+                    "TechniqueName": "Permission Groups Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'net localgroup administrators' via cmd"
+        },
+        {
+            "Substep": "2.F.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1069",
+                    "TechniqueName": "Permission Groups Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'net localgroup administrators -domain' via cmd"
+        },
+        {
+            "Substep": "2.F.3",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1069",
+                    "TechniqueName": "Permission Groups Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'net group \"Domain Admins\" -domain' via cmd"
+        },
+        {
+            "Substep": "2.G.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1087",
+                    "TechniqueName": "Account Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'net user -domain' via cmd"
+        },
+        {
+            "Substep": "2.G.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1087",
+                    "TechniqueName": "Account Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'net user george -domain' via cmd"
+        },
+        {
+            "Substep": "2.H.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1012",
+                    "TechniqueName": "Query Registry"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'reg query' via cmd to enumerate a specific Registry key"
+        },
+        {
+            "Substep": "3.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Privilege Escalation",
+                    "TacticId": "TA0004"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1088",
+                    "TechniqueName": "Bypass User Account Control"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Built-in UAC bypass token duplication capability executed to elevate process integrity level"
+        },
+        {
+            "Substep": "3.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Privilege Escalation",
+                    "TacticId": "TA0004"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1134",
+                    "TechniqueName": "Access Token Manipulation"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Built-in UAC bypass token duplication capability executed to modify current process token"
+        },
+        {
+            "Substep": "3.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1057",
+                    "TechniqueName": "Process Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'ps' (Process status) via Win32 APIs"
+        },
+        {
+            "Substep": "3.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Privilege Escalation",
+                    "TacticId": "TA0004"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1055",
+                    "TechniqueName": "Process Injection"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Built-in process injection capability executed to inject callback into cmd.exe"
+        },
+        {
+            "Substep": "4.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1018",
+                    "TechniqueName": "Remote System Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'net group \"Domain Controllers\" -domain' via cmd"
+        },
+        {
+            "Substep": "4.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1018",
+                    "TechniqueName": "Remote System Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'net group \"Domain Computers\" -domain' via cmd"
+        },
+        {
+            "Substep": "4.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1016",
+                    "TechniqueName": "System Network Configuration Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'netsh advfirewall show allprofiles' via cmd"
+        },
+        {
+            "Substep": "4.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1049",
+                    "TechniqueName": "System Network Connections Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'netstat -ano' via cmd"
+        },
+        {
+            "Substep": "5.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1003",
+                    "TechniqueName": "Credential Dumping"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Built-in Mimikatz credential dump capability executed"
+        },
+        {
+            "Substep": "5.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1055",
+                    "TechniqueName": "Process Injection"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Credential dump capability involved process injection into lsass"
+        },
+        {
+            "Substep": "5.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1003",
+                    "TechniqueName": "Credential Dumping"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Built-in hash dump capability executed"
+        },
+        {
+            "Substep": "5.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1055",
+                    "TechniqueName": "Process Injection"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Hash dump capability involved process injection into lsass.exe"
+        },
+        {
+            "Substep": "5.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Privilege Escalation",
+                    "TacticId": "TA0004"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1134",
+                    "TechniqueName": "Access Token Manipulation"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Built-in token theft capability executed to change user context to George"
+        },
+        {
+            "Substep": "6.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1012",
+                    "TechniqueName": "Query Registry"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'reg query' via cmd to remotely enumerate a specific Registry key on Conficker (10.0.0.5)"
+        },
+        {
+            "Substep": "6.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1043",
+                    "TechniqueName": "Commonly Used Port"
+                }
+            ],
+            "Procedure": "Cobalt Strike: C2 channel modified to use port 80"
+        },
+        {
+            "Substep": "6.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1071",
+                    "TechniqueName": "Standard Application Layer Protocol"
+                }
+            ],
+            "Procedure": "Cobalt Strike: C2 channel modified to use HTTP traffic to freegoogleadsenseinfo.com"
+        },
+        {
+            "Substep": "6.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1026",
+                    "TechniqueName": "Multiband Communication"
+                }
+            ],
+            "Procedure": "Cobalt Strike: C2 channel modified to split communications between both HTTP and DNS"
+        },
+        {
+            "Substep": "6.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Lateral Movement",
+                    "TacticId": "TA0008"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1076",
+                    "TechniqueName": "Remote Desktop Protocol"
+                }
+            ],
+            "Procedure": "Cobalt Strike: C2 channel modified to proxy RDP connection to Conficker (10.0.0.5)"
+        },
+        {
+            "Substep": "7.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1136",
+                    "TechniqueName": "Create Account"
+                }
+            ],
+            "Procedure": "Added user Jesse to Conficker (10.0.0.5) through RDP connection"
+        },
+        {
+            "Substep": "7.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1061",
+                    "TechniqueName": "Graphical User Interface"
+                }
+            ],
+            "Procedure": "Microsoft Management Console (Local Users and Groups snap-in) GUI utility used to add new user through RDP connection"
+        },
+        {
+            "Substep": "7.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1087",
+                    "TechniqueName": "Account Discovery"
+                }
+            ],
+            "Procedure": "Microsoft Management Console (Local Users and Groups snap-in) GUI utility displayed user account information"
+        },
+        {
+            "Substep": "7.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1105",
+                    "TechniqueName": "Remote File Copy"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Built-in upload capability executed to write a DLL payload (updater.dll) to disk on Nimda (10.0.1.6)"
+        },
+        {
+            "Substep": "7.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1053",
+                    "TechniqueName": "Scheduled Task"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'schtasks' via cmd to create scheduled task that executes a DLL payload (updater.dll)"
+        },
+        {
+            "Substep": "8.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1083",
+                    "TechniqueName": "File and Directory Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'dir -s -b \"\\\\conficker\\wormshare\"' via cmd"
+        },
+        {
+            "Substep": "8.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1083",
+                    "TechniqueName": "File and Directory Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'tree \"C:\\Users\\debbie\"' via cmd"
+        },
+        {
+            "Substep": "8.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1057",
+                    "TechniqueName": "Process Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'ps' (Process status) via Win32 APIs"
+        },
+        {
+            "Substep": "8.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1056",
+                    "TechniqueName": "Input Capture"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Built-in keylogging capability executed to capture keystrokes of user Debbie"
+        },
+        {
+            "Substep": "8.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1010",
+                    "TechniqueName": "Application Window Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Keylogging capability included residual enumeration of application windows"
+        },
+        {
+            "Substep": "8.D.1",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1113",
+                    "TechniqueName": "Screen Capture"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Built-in screen capture capability executed to capture screenshot of current window of user Debbie"
+        },
+        {
+            "Substep": "8.D.1",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1055",
+                    "TechniqueName": "Process Injection"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Screen capture capability involved process injection into explorer.exe"
+        },
+        {
+            "Substep": "9.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1083",
+                    "TechniqueName": "File and Directory Discovery"
+                }
+            ],
+            "Procedure": "Cobalt Strike: 'ls' (List) via Win32 APIs to enumerate a network shared drive (Wormshare) on Conficker (10.0.0.5)"
+        },
+        {
+            "Substep": "9.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Exfiltration",
+                    "TacticId": "TA0010"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1039",
+                    "TechniqueName": "Data from Network Shared Drive"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Built-in download capability executed to a collect file (Shockwave_rackb_diagram.vsdx) from a network shared drive (Wormshare) on Conficker (10.0.0.5)"
+        },
+        {
+            "Substep": "9.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Exfiltration",
+                    "TacticId": "TA0010"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1041",
+                    "TechniqueName": "Exfiltration Over Command and Control Channel"
+                }
+            ],
+            "Procedure": "Cobalt Strike: Download capability exfiltrated data through existing C2 channel"
+        },
+        {
+            "Substep": "10.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1060",
+                    "TechniqueName": "Registry Run Keys / Startup Folder"
+                }
+            ],
+            "Procedure": "Batch file (autoupdate.bat) previously written to Startup folder executed when user Debbie logs on to Nimda (10.0.1.6), launching a DLL payload (update.dat) using Rundll32"
+        },
+        {
+            "Substep": "10.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1053",
+                    "TechniqueName": "Scheduled Task"
+                }
+            ],
+            "Procedure": "Scheduled task executed when user Debbie logs on to Nimda (10.0.1.6), launching a DLL payload (updater.dll) using Rundll32"
+        },
+        {
+            "Substep": "10.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1078",
+                    "TechniqueName": "Valid Accounts"
+                }
+            ],
+            "Procedure": "RDP connection to Conficker (10.0.0.5) authenticated using previously added user Jesse"
+        },
+        {
+            "Substep": "10.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1076",
+                    "TechniqueName": "Remote Desktop Protocol"
+                }
+            ],
+            "Procedure": "RDP connection made to Conficker (10.0.0.5) as part of execution of persistence mechanism"
+        },
+        {
+            "Substep": "11.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1064",
+                    "TechniqueName": "Scripting"
+                }
+            ],
+            "Procedure": "Legitimate user Bob clicked and executed malicious VBScript (autoupdate.vbs) on 10.0.1.5 (CodeRed)"
+        },
+        {
+            "Substep": "11.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1043",
+                    "TechniqueName": "Commonly Used Port"
+                }
+            ],
+            "Procedure": "Empire: C2 channel established using port 443"
+        },
+        {
+            "Substep": "11.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1071",
+                    "TechniqueName": "Standard Application Layer Protocol"
+                }
+            ],
+            "Procedure": "Empire: C2 channel established using HTTPS traffic to freegoogleadsenseinfo.com"
+        },
+        {
+            "Substep": "11.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1032",
+                    "TechniqueName": "Standard Cryptographic Protocol"
+                }
+            ],
+            "Procedure": "Empire: Encrypted C2 channel established using HTTPS"
+        },
+        {
+            "Substep": "12.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1016",
+                    "TechniqueName": "System Network Configuration Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'route print' via PowerShell"
+        },
+        {
+            "Substep": "12.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1016",
+                    "TechniqueName": "System Network Configuration Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'ipconfig -all' via PowerShell"
+        },
+        {
+            "Substep": "12.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1033",
+                    "TechniqueName": "System Owner/User Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'whoami -all -fo list' via PowerShell"
+        },
+        {
+            "Substep": "12.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1057",
+                    "TechniqueName": "Process Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'qprocess *' via PowerShell"
+        },
+        {
+            "Substep": "12.D.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1007",
+                    "TechniqueName": "System Service Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'net start' via PowerShell"
+        },
+        {
+            "Substep": "12.E.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1064",
+                    "TechniqueName": "Scripting"
+                }
+            ],
+            "Procedure": "Empire: Built-in WinEnum module executed to programmatically execute a series of enumeration techniques"
+        },
+        {
+            "Substep": "12.E.1.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1033",
+                    "TechniqueName": "System Owner/User Discovery"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of user information"
+        },
+        {
+            "Substep": "12.E.1.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1069",
+                    "TechniqueName": "Permission Groups Discovery"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of AD group memberships"
+        },
+        {
+            "Substep": "12.E.1.3",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1201",
+                    "TechniqueName": "Password Policy Discovery"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of password policy information"
+        },
+        {
+            "Substep": "12.E.1.4.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1083",
+                    "TechniqueName": "File and Directory Discovery"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of recently opened files"
+        },
+        {
+            "Substep": "12.E.1.4.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1083",
+                    "TechniqueName": "File and Directory Discovery"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of interesting files"
+        },
+        {
+            "Substep": "12.E.1.5",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1115",
+                    "TechniqueName": "Clipboard Data"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of clipboard contents"
+        },
+        {
+            "Substep": "12.E.1.6.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1082",
+                    "TechniqueName": "System Information Discovery"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of system information"
+        },
+        {
+            "Substep": "12.E.1.6.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1082",
+                    "TechniqueName": "System Information Discovery"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of Windows update information"
+        },
+        {
+            "Substep": "12.E.1.7",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1012",
+                    "TechniqueName": "Query Registry"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of system information via a Registry query"
+        },
+        {
+            "Substep": "12.E.1.8",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1007",
+                    "TechniqueName": "System Service Discovery"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of services"
+        },
+        {
+            "Substep": "12.E.1.9.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1135",
+                    "TechniqueName": "Network Share Discovery"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of available shares"
+        },
+        {
+            "Substep": "12.E.1.9.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1135",
+                    "TechniqueName": "Network Share Discovery"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of mapped network drives"
+        },
+        {
+            "Substep": "12.E.1.10.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1063",
+                    "TechniqueName": "Security Software Discovery"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of AV solutions"
+        },
+        {
+            "Substep": "12.E.1.10.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1063",
+                    "TechniqueName": "Security Software Discovery"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of firewall rules"
+        },
+        {
+            "Substep": "12.E.1.11",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1016",
+                    "TechniqueName": "System Network Configuration Discovery"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of network adapters"
+        },
+        {
+            "Substep": "12.E.1.12",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1049",
+                    "TechniqueName": "System Network Connections Discovery"
+                }
+            ],
+            "Procedure": "Empire: WinEnum module included enumeration of established network connections"
+        },
+        {
+            "Substep": "12.F.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1069",
+                    "TechniqueName": "Permission Groups Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'net group \"Domain Admins\" -domain' via PowerShell"
+        },
+        {
+            "Substep": "12.F.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1069",
+                    "TechniqueName": "Permission Groups Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'net\u00ef\u00bf\u00bdlocalgroup\u00ef\u00bf\u00bdadministrators' via PowerShell"
+        },
+        {
+            "Substep": "12.G.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1087",
+                    "TechniqueName": "Account Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'net user' via PowerShell"
+        },
+        {
+            "Substep": "12.G.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1087",
+                    "TechniqueName": "Account Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'net user -domain' via PowerShell"
+        },
+        {
+            "Substep": "13.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1018",
+                    "TechniqueName": "Remote System Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'net group \"Domain Computers\" -domain' via PowerShell"
+        },
+        {
+            "Substep": "13.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1049",
+                    "TechniqueName": "System Network Connections Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'net use' via PowerShell"
+        },
+        {
+            "Substep": "13.B.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1049",
+                    "TechniqueName": "System Network Connections Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'netstat -ano' via PowerShell"
+        },
+        {
+            "Substep": "13.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1012",
+                    "TechniqueName": "Query Registry"
+                }
+            ],
+            "Procedure": "Empire:\u00ef\u00bf\u00bd'reg query' via PowerShell to enumerate a specific Registry key"
+        },
+        {
+            "Substep": "14.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Privilege Escalation",
+                    "TacticId": "TA0004"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1088",
+                    "TechniqueName": "Bypass User Account Control"
+                }
+            ],
+            "Procedure": "Empire: Built-in UAC bypass token duplication module executed to launch new callback with elevated process integrity level"
+        },
+        {
+            "Substep": "14.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Privilege Escalation",
+                    "TacticId": "TA0004"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1105",
+                    "TechniqueName": "Remote File Copy"
+                }
+            ],
+            "Procedure": "Empire: UAC bypass module downloaded and wrote a new Empire stager (wdbypass) to disk"
+        },
+        {
+            "Substep": "14.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Privilege Escalation",
+                    "TacticId": "TA0004"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1071",
+                    "TechniqueName": "Standard Application Layer Protocol"
+                }
+            ],
+            "Procedure": "Empire: UAC bypass module downloaded a new Empire stager (wdbypass) over HTTP"
+        },
+        {
+            "Substep": "14.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Privilege Escalation",
+                    "TacticId": "TA0004"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1043",
+                    "TechniqueName": "Commonly Used Port"
+                }
+            ],
+            "Procedure": "Empire: UAC bypass module downloaded a new Empire stager (wdbypass) over port 8080"
+        },
+        {
+            "Substep": "15.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1056",
+                    "TechniqueName": "Input Capture"
+                }
+            ],
+            "Procedure": "Empire: Built-in keylogging module executed to capture keystrokes of user Bob"
+        },
+        {
+            "Substep": "15.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1010",
+                    "TechniqueName": "Application Window Discovery"
+                }
+            ],
+            "Procedure": "Empire: Built-in keylogging module included residual enumeration of application windows"
+        },
+        {
+            "Substep": "15.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1081",
+                    "TechniqueName": "Credentials in Files"
+                }
+            ],
+            "Procedure": "Empire: 'get-content' via PowerShell to collect sensitive file (it_tasks.txt) from a network shared drive (Wormshare) on Conficker (10.0.0.5)"
+        },
+        {
+            "Substep": "16.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1110",
+                    "TechniqueName": "Brute Force"
+                }
+            ],
+            "Procedure": "Empire: 'net use' via PowerShell to brute force password spraying authentication attempts to Morris (10.0.1.4) and Nimda (10.0.1.6) targeting credentials of users\u00ef\u00bf\u00bdKmitnick, Bob, and Frieda"
+        },
+        {
+            "Substep": "16.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1077",
+                    "TechniqueName": "Windows Admin Shares"
+                }
+            ],
+            "Procedure": "Empire: Brute force password spraying attempts targeted Windows admin shares on Morris (10.0.1.4) and Nimda (10.0.1.6)"
+        },
+        {
+            "Substep": "16.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Lateral Movement",
+                    "TacticId": "TA0008"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1078",
+                    "TechniqueName": "Valid Accounts"
+                }
+            ],
+            "Procedure": "Empire: 'net use' via PowerShell to successfully authenticate to Conficker (10.0.0.5) using credentials of user Kmitnick"
+        },
+        {
+            "Substep": "16.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Lateral Movement",
+                    "TacticId": "TA0008"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1077",
+                    "TechniqueName": "Windows Admin Shares"
+                }
+            ],
+            "Procedure": "Empire: Successful authentication targeted Windows admin share on Conficker (10.0.0.5)\u00ef\u00bf\u00bd"
+        },
+        {
+            "Substep": "16.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Lateral Movement",
+                    "TacticId": "TA0008"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1110",
+                    "TechniqueName": "Brute Force"
+                }
+            ],
+            "Procedure": "Empire: Successful authentication to Conficker (10.0.0.5) using credentials of user Kmitnick as a result of the brute force password spraying"
+        },
+        {
+            "Substep": "16.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1126",
+                    "TechniqueName": "Network Share Connection Removal"
+                }
+            ],
+            "Procedure": "Empire: 'net use -delete' via PowerShell"
+        },
+        {
+            "Substep": "16.D.1",
+            "Tactics": [
+                {
+                    "TacticName": "Lateral Movement",
+                    "TacticId": "TA0008"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1077",
+                    "TechniqueName": "Windows Admin Shares"
+                }
+            ],
+            "Procedure": "Empire: Successful authentication targeted Windows admin shares on Conficker (10.0.0.5)"
+        },
+        {
+            "Substep": "16.D.1",
+            "Tactics": [
+                {
+                    "TacticName": "Lateral Movement",
+                    "TacticId": "TA0008"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1078",
+                    "TechniqueName": "Valid Accounts"
+                }
+            ],
+            "Procedure": "Empire: 'net use' via PowerShell to successfully authenticate to Creeper (10.0.0.4) using credentials of user Kmitnick"
+        },
+        {
+            "Substep": "16.E.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1105",
+                    "TechniqueName": "Remote File Copy"
+                }
+            ],
+            "Procedure": "Empire: Built-in upload module executed to write malicious VBScript (autoupdate.vbs) to disk on CodeRed (10.0.1.5)"
+        },
+        {
+            "Substep": "16.F.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1059",
+                    "TechniqueName": "Command-Line Interface"
+                }
+            ],
+            "Procedure": "Empire: Built-in runas module executed to launch malicious VBScript (autoupdate.vbs) as user Kmitnick\u00ef\u00bf\u00bd"
+        },
+        {
+            "Substep": "16.G.1",
+            "Tactics": [
+                {
+                    "TacticName": "Lateral Movement",
+                    "TacticId": "TA0008"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1105",
+                    "TechniqueName": "Remote File Copy"
+                }
+            ],
+            "Procedure": "Empire: Built-in move capability executed to write malicious VBScript (update.vbs) to disk on Creeper (10.0.0.4)"
+        },
+        {
+            "Substep": "16.H.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1007",
+                    "TechniqueName": "System Service Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'sc query' via PowerShell to remotely enumerate services on Creeper (10.0.0.4)"
+        },
+        {
+            "Substep": "16.I.1",
+            "Tactics": [
+                {
+                    "TacticName": "Privilege Escalation",
+                    "TacticId": "TA0004"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1050",
+                    "TechniqueName": "New Service"
+                }
+            ],
+            "Procedure": "Empire: 'sc create' via PowerShell to remotely create a service on Creeper (10.0.0.4)"
+        },
+        {
+            "Substep": "16.I.1",
+            "Tactics": [
+                {
+                    "TacticName": "Privilege Escalation",
+                    "TacticId": "TA0004"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1036",
+                    "TechniqueName": "Masquerading"
+                }
+            ],
+            "Procedure": "Empire: 'sc description' via PowerShell to remotely disguise a service on Creeper (10.0.0.4)"
+        },
+        {
+            "Substep": "16.J.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1007",
+                    "TechniqueName": "System Service Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'sc qc' via PowerShell to remotely enumerate a specific service on Creeper (10.0.0.4)"
+        },
+        {
+            "Substep": "16.K.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1083",
+                    "TechniqueName": "File and Directory Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'type' via PowerShell to remotely enumerate a specific file (update.vbs) on Creeper (10.0.0.4)"
+        },
+        {
+            "Substep": "16.L.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1035",
+                    "TechniqueName": "Service Execution"
+                }
+            ],
+            "Procedure": "Empire: 'sc start' via PowerShell to remotely launch a specific service on Creeper (10.0.0.4)"
+        },
+        {
+            "Substep": "17.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1007",
+                    "TechniqueName": "System Service Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'reg query' via PowerShell to enumerate a specific Registry key associated with terminal services"
+        },
+        {
+            "Substep": "17.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1012",
+                    "TechniqueName": "Query Registry"
+                }
+            ],
+            "Procedure": "Empire: 'reg query' via PowerShell to enumerate a specific Registry key"
+        },
+        {
+            "Substep": "17.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1222",
+                    "TechniqueName": "File and Directory Permissions Modification"
+                }
+            ],
+            "Procedure": "Empire: 'takeown' via PowerShell to obtain ownership of magnify.exe"
+        },
+        {
+            "Substep": "17.B.2",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1222",
+                    "TechniqueName": "File and Directory Permissions Modification"
+                }
+            ],
+            "Procedure": "Empire: 'icacls' via PowerShell to modify the DACL for magnify.exe"
+        },
+        {
+            "Substep": "17.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1015",
+                    "TechniqueName": "Accessibility Features"
+                }
+            ],
+            "Procedure": "Empire: 'copy' via PowerShell to overwrite magnify.exe with cmd.exe"
+        },
+        {
+            "Substep": "18.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1083",
+                    "TechniqueName": "File and Directory Discovery"
+                }
+            ],
+            "Procedure": "Empire: 'Get-ChildItem' via PowerShell to enumerate a network shared drive (Wormshare) on Conficker (10.0.0.5)"
+        },
+        {
+            "Substep": "18.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1074",
+                    "TechniqueName": "Data Staged"
+                }
+            ],
+            "Procedure": "Empire: 'copy' via PowerShell staged a file (Shockwave_network.vsdx) from a network shared drive (Wormshare) on Conficker (10.0.0.5) in the Recycle Bin (C:\\$Recycle.Bin) on CodeRed (10.0.1.5)"
+        },
+        {
+            "Substep": "18.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1039",
+                    "TechniqueName": "Data from Network Shared Drive"
+                }
+            ],
+            "Procedure": "Empire: 'copy' via PowerShell collected a file (Shockwave_network.vsdx) from a network shared drive (Wormshare) on Conficker (10.0.0.5)"
+        },
+        {
+            "Substep": "19.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1036",
+                    "TechniqueName": "Masquerading"
+                }
+            ],
+            "Procedure": "Empire: File dropped to disk is a renamed copy of the WinRAR binary"
+        },
+        {
+            "Substep": "19.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1105",
+                    "TechniqueName": "Remote File Copy"
+                }
+            ],
+            "Procedure": "Empire: Built-in upload module executed to write binary (recycler.exe) to disk on CodeRed (10.0.1.5)"
+        },
+        {
+            "Substep": "19.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1002",
+                    "TechniqueName": "Data Compressed"
+                }
+            ],
+            "Procedure": "Empire: Executed binary (recycler.exe) created compressed archive (old.rar) of previously collected file"
+        },
+        {
+            "Substep": "19.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1022",
+                    "TechniqueName": "Data Encrypted"
+                }
+            ],
+            "Procedure": "Empire: Executed binary (recycler.exe) created encrypted archive (old.rar) of previously collected file"
+        },
+        {
+            "Substep": "19.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Exfiltration",
+                    "TacticId": "TA0010"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1036",
+                    "TechniqueName": "Masquerading"
+                }
+            ],
+            "Procedure": "Empire: Executed binary (recycler.exe) is a renamed copy of the WinRAR binary"
+        },
+        {
+            "Substep": "19.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1048",
+                    "TechniqueName": "Exfiltration Over Alternative Protocol"
+                }
+            ],
+            "Procedure": "Empire: Sequence of 'echo' commands via PowerShell to populate commands in text file (ftp.txt), which is then executed by FTP to exfil data through network connection separate of existing C2 channel"
+        },
+        {
+            "Substep": "19.D.1",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1107",
+                    "TechniqueName": "File Deletion"
+                }
+            ],
+            "Procedure": "Empire: 'del C:\\\"$\"Recycle.bin\\old.rar'"
+        },
+        {
+            "Substep": "19.D.2",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1107",
+                    "TechniqueName": "File Deletion"
+                }
+            ],
+            "Procedure": "Empire: 'del recycler.exe'"
+        },
+        {
+            "Substep": "20.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1015",
+                    "TechniqueName": "Accessibility Features"
+                }
+            ],
+            "Procedure": "magnifer.exe previously overwritten by cmd.exe launched through RDP connection made to Creeper (10.0.0.4)"
+        },
+        {
+            "Substep": "20.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1076",
+                    "TechniqueName": "Remote Desktop Protocol"
+                }
+            ],
+            "Procedure": "RDP connection made to Creeper (10.0.0.4) as part of execution of persistence mechanism"
+        },
+        {
+            "Substep": "20.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1033",
+                    "TechniqueName": "System Owner/User Discovery"
+                }
+            ],
+            "Procedure": "Executed 'whoami' via cmd persistence mechanism through RDP connection made to Creeper (10.0.0.4)"
+        }
+    ]
+}

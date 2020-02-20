@@ -1,0 +1,43 @@
+.topnav {
+  overflow: hidden;
+  background-color: #005B94;
+}
+.topnav a {
+  float: left;
+  color: #ddd;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.topnav a.active {
+  background-color: var(--theme-color);
+  color: white;
+}
+.topnav-right {
+  float: right;
+}
+.subnav {
+  overflow: visible;
+  background-color: var(--theme-color);
+  top: 0;
+  z-index: 9;
+  position: sticky;
+  position: -webkit-sticky;
+}
+.subnav a{
+  float: left;
+  cursor: pointer;
+  padding: 4px 22px;
+  font-size: 14px;
+  text-decoration: none;
+  color: white;
+}
+.subnav a:hover {
+  background-color: white;
+  color: black;
+}
