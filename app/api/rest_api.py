@@ -55,10 +55,12 @@ class RestAPI:
         found = await self.data_svc.get_raw_eval_data(table)
         for item in found:
             for step in item['Steps']:
-                for category in step['DetectionCategories']:
-                    data[step['SubStep']][category['Category']]['count'] += 1
+                if step['SubStep'].split('.')[0] == '19':
+                    continue
+                for category in step['Detections']:
+                    data[step['SubStep']][category['DetectionType']]['count'] += 1
                     for modifier in category['Modifiers']:
-                        data[step['SubStep']][category['Category']]['modifiers'][modifier] += 1
+                        data[step['SubStep']][category['DetectionType']]['modifiers'][modifier] += 1
         return data
 
     async def sub_step_results_round_1(self, table):

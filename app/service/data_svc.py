@@ -137,9 +137,9 @@ class DataService:
             }
         for tech in data:
             for step in tech['Steps']:
-                for detect in step['DetectionCategories']:
+                for detect in step['Detections']:
                     for mod in detect['Modifiers']:
-                        tmp[detect['Category']][mod] += 1
+                        tmp[detect['DetectionType']][mod] += 1
         for item in tmp.keys():
             tmp[item] = [tmp[item][key] for key in tmp[item].keys()]
 
@@ -173,6 +173,8 @@ class DataService:
         found = await self.get_raw_eval_data(table)
         for item in found:
             for step in item['Steps']:
+                if step['SubStep'].split('.')[0] == '19':
+                    continue
                 step_num = 'Step' + str(step['SubStep'].split('.')[0])
                 mod_dict = {'Alert': 0, 'Correlated': 0, 'Delayed (Manual)': 0, 'Delayed (Processing)': 0,
                             'Host Interrogation': 0,
@@ -180,10 +182,10 @@ class DataService:
                             'Configuration Change (UX)': 0, 'Innovative': 0}
                 for cat in ['None', 'Telemetry', 'General', 'Tactic', 'Technique', 'MSSP']:
                     data[step_num][cat].update(dict(modifiers=mod_dict))
-                for category in step['DetectionCategories']:
-                    data[step_num][category['Category']]['count'] += 1
+                for category in step['Detections']:
+                    data[step_num][category['DetectionType']]['count'] += 1
                     for modifier in category['Modifiers']:
-                        data[step_num][category['Category']]['modifiers'][modifier] += 1
+                        data[step_num][category['DetectionType']]['modifiers'][modifier] += 1
         return data
 
     async def get_eval_results_data_1(self, table):
