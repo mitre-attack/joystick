@@ -1,0 +1,2257 @@
+{
+    "Round": "2",
+    "Steps": [
+        {
+            "Substep": "1.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1204",
+                    "TechniqueName": "User Execution"
+                }
+            ],
+            "Procedure": "User Pam executes\u00a0payload:\u00a0C:\\User\\pam\\Desktop\\rcs.3aka3.doc"
+        },
+        {
+            "Substep": "1.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1036",
+                    "TechniqueName": "Masquerading"
+                }
+            ],
+            "Procedure": "Payload uses right-to-left override character to obfuscate payload\u00a0file name\u200b cod.3aka3.scr -> rcs.3aka3.doc"
+        },
+        {
+            "Substep": "1.A.3",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1065",
+                    "TechniqueName": "Uncommonly Used Port"
+                }
+            ],
+            "Procedure": "Establish C2 channel via rcs.3aka3.doc payload"
+        },
+        {
+            "Substep": "1.A.4",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1032",
+                    "TechniqueName": "Standard Cryptographic Protocol"
+                }
+            ],
+            "Procedure": "rcs.3aka3.doc uses RC4 stream cipher to encrypt C2"
+        },
+        {
+            "Substep": "1.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1059",
+                    "TechniqueName": "Command-Line Interface"
+                }
+            ],
+            "Procedure": "rcs.3aka.doc spawns cmd.exe"
+        },
+        {
+            "Substep": "1.B.2",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1086",
+                    "TechniqueName": "PowerShell"
+                }
+            ],
+            "Procedure": "cmd.exe spawns powershell.exe"
+        },
+        {
+            "Substep": "2.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1083",
+                    "TechniqueName": "File and Directory Discovery"
+                }
+            ],
+            "Procedure": "PowerShell script searches filesystem for\u00a0document and media files (.doc, .ppt, .jpg, etc.)"
+        },
+        {
+            "Substep": "2.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1119",
+                    "TechniqueName": "Automated Collection"
+                }
+            ],
+            "Procedure": "PowerShell script searches filesystem for\u00a0document and media files (.doc, .ppt, .jpg, etc.)"
+        },
+        {
+            "Substep": "2.A.3",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1005",
+                    "TechniqueName": "Data from Local System"
+                }
+            ],
+            "Procedure": "PowerShell script collects files found in C:\\Users\\Pam\\\u00a0(recursive)"
+        },
+        {
+            "Substep": "2.A.4",
+            "Tactics": [
+                {
+                    "TacticName": "Exfiltration",
+                    "TacticId": "TA0010"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1002",
+                    "TechniqueName": "Data Compressed"
+                }
+            ],
+            "Procedure": "PowerShell script compresses files and stores in\u00a0C:\\Users\\pam\\AppData\\Roaming\\Draft.Zip"
+        },
+        {
+            "Substep": "2.A.5",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1074",
+                    "TechniqueName": "Data Staged"
+                }
+            ],
+            "Procedure": "PowerShell script stages files for exfil in C:\\Users\\pam\\AppData\\Roaming\\Draft.Zip"
+        },
+        {
+            "Substep": "2.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Exfiltration",
+                    "TacticId": "TA0010"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1041",
+                    "TechniqueName": "Exfiltration Over Command and Control Channel"
+                }
+            ],
+            "Procedure": "Attacker downloads Draft.Zip over C2 channel (192.168.0.5 over TCP port 1234)"
+        },
+        {
+            "Substep": "3.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1105",
+                    "TechniqueName": "Remote File Copy"
+                }
+            ],
+            "Procedure": "Attacker uploads stage 2 payload, monkey.png, to target"
+        },
+        {
+            "Substep": "3.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1027",
+                    "TechniqueName": "Obfuscated Files or Information"
+                }
+            ],
+            "Procedure": "Attacker embedded a PowerShell script within a PNG image using steganography"
+        },
+        {
+            "Substep": "3.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1122",
+                    "TechniqueName": "Component Object Model Hijacking"
+                }
+            ],
+            "Procedure": "Modify Registry\u00a0\u200b\u200b(New-Item and\u00a0\u200b\u200bNew-ItemProperty)\u200b\u200b to enable COM hijacking of sdclt.exe"
+        },
+        {
+            "Substep": "3.B.2",
+            "Tactics": [
+                {
+                    "TacticName": "Privilege Escalation",
+                    "TacticId": "TA0004"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1088",
+                    "TechniqueName": "Bypass User Account Control"
+                }
+            ],
+            "Procedure": "Execute elevated PowerShell payload"
+        },
+        {
+            "Substep": "3.B.3",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1043",
+                    "TechniqueName": "Commonly Used Port"
+                }
+            ],
+            "Procedure": "PowerShell connects to 192.168.0.5 on TCP 443"
+        },
+        {
+            "Substep": "3.B.4",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1071",
+                    "TechniqueName": "Standard Application Layer Protocol"
+                }
+            ],
+            "Procedure": "Stage 2 payload sends C2 data over HTTPS"
+        },
+        {
+            "Substep": "3.B.5",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1032",
+                    "TechniqueName": "Standard Cryptographic Protocol"
+                }
+            ],
+            "Procedure": "Stage 2 payload sends C2 data over HTTPS"
+        },
+        {
+            "Substep": "3.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1112",
+                    "TechniqueName": "Modify Registry"
+                }
+            ],
+            "Procedure": "Modify Registry\u00a0(Remove-Item)\u00a0to remove artifacts of COM hijacking"
+        },
+        {
+            "Substep": "4.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1105",
+                    "TechniqueName": "Remote File Copy"
+                }
+            ],
+            "Procedure": "Attacker uploads additional tools over C2 channel"
+        },
+        {
+            "Substep": "4.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1086",
+                    "TechniqueName": "PowerShell"
+                }
+            ],
+            "Procedure": "Attacker spawns interactive PowerShell session"
+        },
+        {
+            "Substep": "4.A.3",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1140",
+                    "TechniqueName": "Deobfuscate/Decode Files or Information"
+                }
+            ],
+            "Procedure": "PowerShell script decompresses file: C:\\Users\\Pam\\Downloads\\SysinternalsSuite.zip"
+        },
+        {
+            "Substep": "4.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1057",
+                    "TechniqueName": "Process Discovery"
+                }
+            ],
+            "Procedure": "Attacker lists current processes"
+        },
+        {
+            "Substep": "4.B.2",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1107",
+                    "TechniqueName": "File Deletion"
+                }
+            ],
+            "Procedure": "sdelete.exe is used to delete artifacts\u00a0in user profile sub-directories"
+        },
+        {
+            "Substep": "4.B.3",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1107",
+                    "TechniqueName": "File Deletion"
+                }
+            ],
+            "Procedure": "sdelete.exe is used to delete artifacts\u00a0in user profile sub-directories"
+        },
+        {
+            "Substep": "4.B.4",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1107",
+                    "TechniqueName": "File Deletion"
+                }
+            ],
+            "Procedure": "sdelete.exe is used to delete artifacts\u00a0in user profile sub-directories"
+        },
+        {
+            "Substep": "4.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1083",
+                    "TechniqueName": "File and Directory Discovery"
+                }
+            ],
+            "Procedure": "PowerShell gets Pam's temporary directory path"
+        },
+        {
+            "Substep": "4.C.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1033",
+                    "TechniqueName": "System Owner/User Discovery"
+                }
+            ],
+            "Procedure": "PowerShell gets the current user name"
+        },
+        {
+            "Substep": "4.C.3",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1082",
+                    "TechniqueName": "System Information Discovery"
+                }
+            ],
+            "Procedure": "PowerShell gets computer hostname"
+        },
+        {
+            "Substep": "4.C.4",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1016",
+                    "TechniqueName": "System Network Configuration Discovery"
+                }
+            ],
+            "Procedure": "PowerShell gets current domain name"
+        },
+        {
+            "Substep": "4.C.5",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1057",
+                    "TechniqueName": "Process Discovery"
+                }
+            ],
+            "Procedure": "PowerShell gets current process ID"
+        },
+        {
+            "Substep": "4.C.6",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1082",
+                    "TechniqueName": "System Information Discovery"
+                }
+            ],
+            "Procedure": "PowerShell performs WMI queries to determine\u00a0OS version"
+        },
+        {
+            "Substep": "4.C.7",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1063",
+                    "TechniqueName": "Security Software Discovery"
+                }
+            ],
+            "Procedure": "PowerShell performs WMI query to discover anti-virus software\u200b"
+        },
+        {
+            "Substep": "4.C.8",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1063",
+                    "TechniqueName": "Security Software Discovery"
+                }
+            ],
+            "Procedure": "PowerShell performs WMI query to discover firewall software\u200b\u200b"
+        },
+        {
+            "Substep": "4.C.9",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1069",
+                    "TechniqueName": "Permission Groups Discovery"
+                }
+            ],
+            "Procedure": "PowerShell script gets user\u2019s domain group membership via\u00a0Invoke-NetUserGetGroups"
+        },
+        {
+            "Substep": "4.C.10",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1106",
+                    "TechniqueName": "Execution through API"
+                }
+            ],
+            "Procedure": "Execute API calls by reflectively loading DLLs"
+        },
+        {
+            "Substep": "4.C.11",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1069",
+                    "TechniqueName": "Permission Groups Discovery"
+                }
+            ],
+            "Procedure": "PowerShell script gets user\u2019s domain group membership via\u00a0Invoke-NetUserGetGroups"
+        },
+        {
+            "Substep": "4.C.12",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1106",
+                    "TechniqueName": "Execution through API"
+                }
+            ],
+            "Procedure": "Execute API calls by reflectively loading DLLs"
+        },
+        {
+            "Substep": "5.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1050",
+                    "TechniqueName": "New Service"
+                }
+            ],
+            "Procedure": "PowerShell creates a new service via New-Service that executes a reverse shell at startup\u200b"
+        },
+        {
+            "Substep": "5.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1060",
+                    "TechniqueName": "Registry Run Keys / Startup Folder"
+                }
+            ],
+            "Procedure": "PowerShell creates a .lnk file in the startup folder which executes C:\\Windows\\hostui.bat on login"
+        },
+        {
+            "Substep": "6.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1081",
+                    "TechniqueName": "Credentials in Files"
+                }
+            ],
+            "Procedure": "Accesscheck.exe reads the Chrome SQL database file to extract encrypted credentials"
+        },
+        {
+            "Substep": "6.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1003",
+                    "TechniqueName": "Credential Dumping"
+                }
+            ],
+            "Procedure": "Accesscheck.exe calls the Windows API to decrypt Chrome passwords"
+        },
+        {
+            "Substep": "6.A.3",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1036",
+                    "TechniqueName": "Masquerading"
+                }
+            ],
+            "Procedure": "Chrome password dump tool is named Accesscheck.exe, a legitimate Sysinternals tool"
+        },
+        {
+            "Substep": "6.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1145",
+                    "TechniqueName": "Private Keys"
+                }
+            ],
+            "Procedure": "PowerShell exports a certificate to a PFX file using Export-PfxCertificate"
+        },
+        {
+            "Substep": "6.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1003",
+                    "TechniqueName": "Credential Dumping"
+                }
+            ],
+            "Procedure": "Attacker dumps password hashes from the Windows registry"
+        },
+        {
+            "Substep": "7.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1113",
+                    "TechniqueName": "Screen Capture"
+                }
+            ],
+            "Procedure": "Custom PowerShell script loads .Net assemblies to take screenshots every 300 seconds; screenshots are saved to: $env:USERPROFILE\\Downloads\\$RandomFileName.bmp"
+        },
+        {
+            "Substep": "7.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1115",
+                    "TechniqueName": "Clipboard Data"
+                }
+            ],
+            "Procedure": "PowerShell obtains clipboard contents using Get-Clipboard cmdlet"
+        },
+        {
+            "Substep": "7.A.3",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1056",
+                    "TechniqueName": "Input Capture"
+                }
+            ],
+            "Procedure": "Custom PowerShell function Get-KeyStrokes calls WinAPI functions to capture user keystrokes"
+        },
+        {
+            "Substep": "7.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1005",
+                    "TechniqueName": "Data from Local System"
+                }
+            ],
+            "Procedure": "PowerShell 7ZipPowerShell module compresses data in Downloads directory"
+        },
+        {
+            "Substep": "7.B.2",
+            "Tactics": [
+                {
+                    "TacticName": "Exfiltration",
+                    "TacticId": "TA0010"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1002",
+                    "TechniqueName": "Data Compressed"
+                }
+            ],
+            "Procedure": "PowerShell 7ZipPowerShell module compresses data in the Downloads directory"
+        },
+        {
+            "Substep": "7.B.3",
+            "Tactics": [
+                {
+                    "TacticName": "Exfiltration",
+                    "TacticId": "TA0010"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1022",
+                    "TechniqueName": "Data Encrypted"
+                }
+            ],
+            "Procedure": "PowerShell 7ZipPowerShell module encrypts data in Downloads directory"
+        },
+        {
+            "Substep": "7.B.4",
+            "Tactics": [
+                {
+                    "TacticName": "Exfiltration",
+                    "TacticId": "TA0010"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1048",
+                    "TechniqueName": "Exfiltration Over Alternative Protocol"
+                }
+            ],
+            "Procedure": "PowerShell copies OfficeSupplies.7z to attacker WebDav\u00a0network share"
+        },
+        {
+            "Substep": "8.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1018",
+                    "TechniqueName": "Remote System Discovery"
+                }
+            ],
+            "Procedure": "PowerShell function\u00a0Ad-Search\u00a0executes\u00a0LDAP queries to domain controller to identify remote systems"
+        },
+        {
+            "Substep": "8.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                },
+                {
+                    "TacticName": "Lateral Movement",
+                    "TacticId": "TA0008"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1028",
+                    "TechniqueName": "Windows Remote Management"
+                }
+            ],
+            "Procedure": "Nashua establishes\u00a0WinRM connection to Scranton via PowerShell\u00a0Invoke-Command"
+        },
+        {
+            "Substep": "8.A.3",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1057",
+                    "TechniqueName": "Process Discovery"
+                }
+            ],
+            "Procedure": "PowerShell remotely executes\u00a0Get-Processon Scranton via WinRM"
+        },
+        {
+            "Substep": "8.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Lateral Movement",
+                    "TacticId": "TA0008"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1105",
+                    "TechniqueName": "Remote File Copy"
+                }
+            ],
+            "Procedure": "PowerShell function\u00a0Invoke-SeaDukeStage uses\u00a0Copy-Item\u00a0to\u00a0copy python.exe from a WebDAV share to remote host\u00a0Scranton"
+        },
+        {
+            "Substep": "8.B.2",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1045",
+                    "TechniqueName": "Software Packing"
+                }
+            ],
+            "Procedure": "Python.exe is a UPX packed payload"
+        },
+        {
+            "Substep": "8.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1078",
+                    "TechniqueName": "Valid Accounts"
+                }
+            ],
+            "Procedure": "PsExec64.exe uses Pam's credentials to authenticate to Scranton"
+        },
+        {
+            "Substep": "8.C.2",
+            "Tactics": [
+                {
+                    "TacticName": "Lateral Movement",
+                    "TacticId": "TA0008"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1077",
+                    "TechniqueName": "Windows Admin Shares"
+                }
+            ],
+            "Procedure": "PsExec64.exe establishes SMB session to Scranton's IPC$ share, and writes file: C:\\Windows\\PSEXESVC.exe"
+        },
+        {
+            "Substep": "8.C.3",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1035",
+                    "TechniqueName": "Service Execution"
+                }
+            ],
+            "Procedure": "python.exe executed by PSEXESVC.exe, which is executed by services.exe"
+        },
+        {
+            "Substep": "9.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1105",
+                    "TechniqueName": "Remote File Copy"
+                }
+            ],
+            "Procedure": "Python process uploads rar.exe on Scranton"
+        },
+        {
+            "Substep": "9.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1105",
+                    "TechniqueName": "Remote File Copy"
+                }
+            ],
+            "Procedure": "Python process uploads sdelete64.exe.exe on Scranton"
+        },
+        {
+            "Substep": "9.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1086",
+                    "TechniqueName": "PowerShell"
+                }
+            ],
+            "Procedure": "Python process spawning PowerShell\u200b"
+        },
+        {
+            "Substep": "9.B.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1083",
+                    "TechniqueName": "File and Directory Discovery"
+                }
+            ],
+            "Procedure": "PowerShell script searches filesystem for\u00a0document and media files (.doc, .ppt, .jpg, etc.)"
+        },
+        {
+            "Substep": "9.B.3",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1119",
+                    "TechniqueName": "Automated Collection"
+                }
+            ],
+            "Procedure": "PowerShell script searches filesystem for\u00a0document and media files (.doc, .ppt, .jpg, etc.)"
+        },
+        {
+            "Substep": "9.B.4",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1005",
+                    "TechniqueName": "Data from Local System"
+                }
+            ],
+            "Procedure": "PowerShell script collects files found in C:\\Users\\Pam\\\u00a0(recursive)"
+        },
+        {
+            "Substep": "9.B.5",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1074",
+                    "TechniqueName": "Data Staged"
+                }
+            ],
+            "Procedure": "PowerShell script stages files for exfil\u00a0in\u00a0zip:\u200b C:\\Users\\pam\\AppData\u200b\u200b\\Roaming\\working.zip\u200b\u200b"
+        },
+        {
+            "Substep": "9.B.6",
+            "Tactics": [
+                {
+                    "TacticName": "Exfiltration",
+                    "TacticId": "TA0010"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1022",
+                    "TechniqueName": "Data Encrypted"
+                }
+            ],
+            "Procedure": "PowerShell executes\u00a0rar.exe\u00a0to encrypt\u00a0working.zip\u00a0with password\u200b\u200b"
+        },
+        {
+            "Substep": "9.B.7",
+            "Tactics": [
+                {
+                    "TacticName": "Exfiltration",
+                    "TacticId": "TA0010"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1002",
+                    "TechniqueName": "Data Compressed"
+                }
+            ],
+            "Procedure": "rar.exe compresses files into single zip: C:\\Users\\pam\\Desktop\\working.zip"
+        },
+        {
+            "Substep": "9.B.8",
+            "Tactics": [
+                {
+                    "TacticName": "Exfiltration",
+                    "TacticId": "TA0010"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1041",
+                    "TechniqueName": "Exfiltration Over Command and Control Channel"
+                }
+            ],
+            "Procedure": "Working.zip.rar\u00a0is downloaded over\u00a0python.exe\u00a0C2 channel"
+        },
+        {
+            "Substep": "9.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1107",
+                    "TechniqueName": "File Deletion"
+                }
+            ],
+            "Procedure": "Python process deletes files:\u00a0rar.exe"
+        },
+        {
+            "Substep": "9.C.2",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1107",
+                    "TechniqueName": "File Deletion"
+                }
+            ],
+            "Procedure": "sdelete64.exe deletes working.zip (Desktop)"
+        },
+        {
+            "Substep": "9.C.3",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1107",
+                    "TechniqueName": "File Deletion"
+                }
+            ],
+            "Procedure": "sdelete64.exe deletes working.zip (AppData)"
+        },
+        {
+            "Substep": "9.C.4",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1107",
+                    "TechniqueName": "File Deletion"
+                }
+            ],
+            "Procedure": "del command deletes sdelete64.exe"
+        },
+        {
+            "Substep": "10.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1035",
+                    "TechniqueName": "Service Execution"
+                }
+            ],
+            "Procedure": "Persistent service javamtsup.exe executes on system startup"
+        },
+        {
+            "Substep": "10.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1060",
+                    "TechniqueName": "Registry Run Keys / Startup Folder"
+                }
+            ],
+            "Procedure": "User login triggers execution of Startup Folder payload,\u00a0hostui.lnk"
+        },
+        {
+            "Substep": "10.B.2",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1106",
+                    "TechniqueName": "Execution through API"
+                }
+            ],
+            "Procedure": "hostui.exe spawns PowerShell callback using WinAPI function"
+        },
+        {
+            "Substep": "10.B.3",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1134",
+                    "TechniqueName": "Access Token Manipulation"
+                }
+            ],
+            "Procedure": "PowerShell callback spawns with duplicated token from Explorer.exe"
+        },
+        {
+            "Substep": "11.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1204",
+                    "TechniqueName": "User Execution"
+                }
+            ],
+            "Procedure": "User Oscar executes 37486-the-shocking-truth-about-election-rigging-in-america.rtf.lnk payload"
+        },
+        {
+            "Substep": "11.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1096",
+                    "TechniqueName": "NTFS File Attributes"
+                }
+            ],
+            "Procedure": "PowerShell ADS executes from 2016_United_States_presidential_election_-_Wikipedia.html\n"
+        },
+        {
+            "Substep": "11.A.3",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1497",
+                    "TechniqueName": "Virtualization/Sandbox Evasion"
+                }
+            ],
+            "Procedure": "Check that BIOS version and serial number are not associated with VirtualBox or VMware"
+        },
+        {
+            "Substep": "11.A.4",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1082",
+                    "TechniqueName": "System Information Discovery"
+                }
+            ],
+            "Procedure": "Enumeration of computer manufacturer, model, and version information"
+        },
+        {
+            "Substep": "11.A.5",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1120",
+                    "TechniqueName": "Peripheral Device Discovery"
+                }
+            ],
+            "Procedure": "Enumeration of devices/adapters to check for presence of VirtualBox driver(s)"
+        },
+        {
+            "Substep": "11.A.6",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1033",
+                    "TechniqueName": "System Owner/User Discovery"
+                }
+            ],
+            "Procedure": "Check that username is not related to admin or a generic value (ex: user)"
+        },
+        {
+            "Substep": "11.A.7",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1016",
+                    "TechniqueName": "System Network Configuration Discovery"
+                }
+            ],
+            "Procedure": "Check that computer is joined to a domain"
+        },
+        {
+            "Substep": "11.A.8",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1057",
+                    "TechniqueName": "Process Discovery"
+                }
+            ],
+            "Procedure": "Check that processes such as procexp.exe, taskmgr.exe, or wireshark.exe are not running"
+        },
+        {
+            "Substep": "11.A.9",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1083",
+                    "TechniqueName": "File and Directory Discovery"
+                }
+            ],
+            "Procedure": "Check that payload is not inside path that contains \u201csample\u201d or is the length of a hash value"
+        },
+        {
+            "Substep": "11.A.10",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1140",
+                    "TechniqueName": "Deobfuscate/Decode Files or Information"
+                }
+            ],
+            "Procedure": "Decode embedded into DLL payload"
+        },
+        {
+            "Substep": "11.A.11",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1060",
+                    "TechniqueName": "Registry Run Keys / Startup Folder"
+                }
+            ],
+            "Procedure": "Establish Registry persistence by adding subkey via PowerShell (New-ItemProperty)"
+        },
+        {
+            "Substep": "11.A.12",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1086",
+                    "TechniqueName": "PowerShell"
+                }
+            ],
+            "Procedure": "PowerShell executes stager payload"
+        },
+        {
+            "Substep": "11.A.13",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1043",
+                    "TechniqueName": "Commonly Used Port"
+                }
+            ],
+            "Procedure": "Establish C2 channel via PowerShell payload"
+        },
+        {
+            "Substep": "11.A.14",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1071",
+                    "TechniqueName": "Standard Application Layer Protocol"
+                }
+            ],
+            "Procedure": "Establish C2 channel via PowerShell payload"
+        },
+        {
+            "Substep": "11.A.15",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1032",
+                    "TechniqueName": "Standard Cryptographic Protocol"
+                }
+            ],
+            "Procedure": "Establish C2 channel via PowerShell payload"
+        },
+        {
+            "Substep": "12.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1083",
+                    "TechniqueName": "File and Directory Discovery"
+                }
+            ],
+            "Procedure": "Enumerate System32 directory via the timestomp function"
+        },
+        {
+            "Substep": "12.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1099",
+                    "TechniqueName": "Timestomp"
+                }
+            ],
+            "Procedure": "Modify time attributes of C:\\Users\\oscar\\AppData\\Roaming\\Microsoft\\kxwn.lock via the timestomp function"
+        },
+        {
+            "Substep": "12.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1063",
+                    "TechniqueName": "Security Software Discovery"
+                }
+            ],
+            "Procedure": "Enumerate registered AV products via the detectav function"
+        },
+        {
+            "Substep": "12.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1012",
+                    "TechniqueName": "Query Registry"
+                }
+            ],
+            "Procedure": "Enumerate installed software via the software function via PowerShell (OpenSubKey)"
+        },
+        {
+            "Substep": "12.C.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1012",
+                    "TechniqueName": "Query Registry"
+                }
+            ],
+            "Procedure": "Enumerate installed software via the software function via PowerShell (OpenSubKey)"
+        },
+        {
+            "Substep": "13.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1082",
+                    "TechniqueName": "System Information Discovery"
+                }
+            ],
+            "Procedure": "Enumerate computer name via the comp function via PowerShell"
+        },
+        {
+            "Substep": "13.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1016",
+                    "TechniqueName": "System Network Configuration Discovery"
+                }
+            ],
+            "Procedure": "Enumerate domain name via the domain function via PowerShell"
+        },
+        {
+            "Substep": "13.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1033",
+                    "TechniqueName": "System Owner/User Discovery"
+                }
+            ],
+            "Procedure": "Enumerate current username via the user function via PowerShell"
+        },
+        {
+            "Substep": "13.D.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1057",
+                    "TechniqueName": "Process Discovery"
+                }
+            ],
+            "Procedure": "Enumerate running processes via the pslist function via PowerShell"
+        },
+        {
+            "Substep": "14.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1122",
+                    "TechniqueName": "Component Object Model Hijacking"
+                }
+            ],
+            "Procedure": " Modify Registry (New-Item and New-ItemProperty) to enable COM hijacking of sdclt.exe via the bypass function"
+        },
+        {
+            "Substep": "14.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Privilege Escalation",
+                    "TacticId": "TA0004"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1088",
+                    "TechniqueName": "Bypass User Account Control"
+                }
+            ],
+            "Procedure": "Execute elevated payload via the bypass function"
+        },
+        {
+            "Substep": "14.A.3",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1112",
+                    "TechniqueName": "Modify Registry"
+                }
+            ],
+            "Procedure": "Modify Registry (Remove-Item) to remove artifacts of COM hijacking via the bypass function"
+        },
+        {
+            "Substep": "14.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1047",
+                    "TechniqueName": "Windows Management Instrumentation"
+                }
+            ],
+            "Procedure": "Create and execute Win32_AuditCode WMI class in root\\cimv2 via the wmidump function"
+        },
+        {
+            "Substep": "14.B.2",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1057",
+                    "TechniqueName": "Process Discovery"
+                }
+            ],
+            "Procedure": "Enumerate and track PowerShell processes via the wmidump function"
+        },
+        {
+            "Substep": "14.B.3",
+            "Tactics": [
+                {
+                    "TacticName": "Command and Control",
+                    "TacticId": "TA0011"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1105",
+                    "TechniqueName": "Remote File Copy"
+                }
+            ],
+            "Procedure": "Drop Mimikatz to disk via the wmidump function"
+        },
+        {
+            "Substep": "14.B.4",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1003",
+                    "TechniqueName": "Credential Dumping"
+                }
+            ],
+            "Procedure": "Dump plaintext credentials of MScott with Mimikatz via the wmidump function"
+        },
+        {
+            "Substep": "14.B.5",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1027",
+                    "TechniqueName": "Obfuscated Files or Information"
+                }
+            ],
+            "Procedure": "Encode and write Mimikatz output to WMI class property via the wmidump function"
+        },
+        {
+            "Substep": "14.B.6",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1140",
+                    "TechniqueName": "Deobfuscate/Decode Files or Information"
+                }
+            ],
+            "Procedure": "Read and decode Mimikatz output in WMI class via the wmidump function"
+        },
+        {
+            "Substep": "15.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1033",
+                    "TechniqueName": "System Owner/User Discovery"
+                }
+            ],
+            "Procedure": "Enumerate logged on user via the wmi function"
+        },
+        {
+            "Substep": "15.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1084",
+                    "TechniqueName": "Windows Management Instrumentation Event Subscription"
+                }
+            ],
+            "Procedure": "Establish WMI persistence via the wmi function via PowerShell"
+        },
+        {
+            "Substep": "16.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1018",
+                    "TechniqueName": "Remote System Discovery"
+                }
+            ],
+            "Procedure": "Enumerate domain controller via the Get-NetDomainController function"
+        },
+        {
+            "Substep": "16.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Discovery",
+                    "TacticId": "TA0007"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1033",
+                    "TechniqueName": "System Owner/User Discovery"
+                }
+            ],
+            "Procedure": "Enumerate domain SID (from current user SID)"
+        },
+        {
+            "Substep": "16.B.2",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1106",
+                    "TechniqueName": "Execution through API"
+                }
+            ],
+            "Procedure": "Execute API calls by reflectively loading DLLs"
+        },
+        {
+            "Substep": "16.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                },
+                {
+                    "TacticName": "Lateral Movement",
+                    "TacticId": "TA0008"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1028",
+                    "TechniqueName": "Windows Remote Management"
+                }
+            ],
+            "Procedure": "Establish WinRM connection to domain controller"
+        },
+        {
+            "Substep": "16.C.2",
+            "Tactics": [
+                {
+                    "TacticName": "Privilege Escalation",
+                    "TacticId": "TA0004"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1078",
+                    "TechniqueName": "Valid Accounts"
+                }
+            ],
+            "Procedure": "Valid username and password for user MScott used for WinRM connection"
+        },
+        {
+            "Substep": "16.D.1",
+            "Tactics": [
+                {
+                    "TacticName": "Lateral Movement",
+                    "TacticId": "TA0008"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1105",
+                    "TechniqueName": "Remote File Copy"
+                }
+            ],
+            "Procedure": "Write Mimikatz to remote target"
+        },
+        {
+            "Substep": "16.D.2",
+            "Tactics": [
+                {
+                    "TacticName": "Credential Access",
+                    "TacticId": "TA0006"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1003",
+                    "TechniqueName": "Credential Dumping"
+                }
+            ],
+            "Procedure": "Dump krbtgt hash with Mimikatz (m.exe)"
+        },
+        {
+            "Substep": "17.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1114",
+                    "TechniqueName": "Email Collection"
+                }
+            ],
+            "Procedure": "Dump messages from Outbox inbox via the psemail function"
+        },
+        {
+            "Substep": "17.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1005",
+                    "TechniqueName": "Data from Local System"
+                }
+            ],
+            "Procedure": "Collect file via PowerShell (Copy-Item)"
+        },
+        {
+            "Substep": "17.B.2",
+            "Tactics": [
+                {
+                    "TacticName": "Collection",
+                    "TacticId": "TA0009"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1074",
+                    "TechniqueName": "Data Staged"
+                }
+            ],
+            "Procedure": "Stage collected file via PowerShell (Copy-Item)"
+        },
+        {
+            "Substep": "17.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Exfiltration",
+                    "TacticId": "TA0010"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1002",
+                    "TechniqueName": "Data Compressed"
+                }
+            ],
+            "Procedure": "Compress staging directory (C:\\Windows\\Temp\\WindowsParentalControlMigration) via the zip function"
+        },
+        {
+            "Substep": "17.C.2",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1027",
+                    "TechniqueName": "Obfuscated Files or Information"
+                }
+            ],
+            "Procedure": "Append GIF file header to compressed file (C:\\Windows\\Temp\\WindowsParentalControlMigration.tmp)"
+        },
+        {
+            "Substep": "18.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1102",
+                    "TechniqueName": "Web Service"
+                }
+            ],
+            "Procedure": "Map network drive to OneDrive URL (net use)"
+        },
+        {
+            "Substep": "18.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Exfiltration",
+                    "TacticId": "TA0010"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1048",
+                    "TechniqueName": "Exfiltration Over Alternative Protocol"
+                }
+            ],
+            "Procedure": "Exfil collection via OneDrive"
+        },
+        {
+            "Substep": "19.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1107",
+                    "TechniqueName": "File Deletion"
+                }
+            ],
+            "Procedure": "Delete operational artifacts on disk via the wipe function"
+        },
+        {
+            "Substep": "19.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1055",
+                    "TechniqueName": "Process Injection"
+                }
+            ],
+            "Procedure": "Reflectively inject SDelete binary via the wipe function"
+        },
+        {
+            "Substep": "19.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1107",
+                    "TechniqueName": "File Deletion"
+                }
+            ],
+            "Procedure": "Delete operational payloads on disk via the wipe function"
+        },
+        {
+            "Substep": "19.B.2",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1055",
+                    "TechniqueName": "Process Injection"
+                }
+            ],
+            "Procedure": "Reflectively inject SDelete binary via the wipe function"
+        },
+        {
+            "Substep": "19.C.1",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1107",
+                    "TechniqueName": "File Deletion"
+                }
+            ],
+            "Procedure": "Delete operational artifacts on disk via the wipe function"
+        },
+        {
+            "Substep": "19.C.2",
+            "Tactics": [
+                {
+                    "TacticName": "Defense Evasion",
+                    "TacticId": "TA0005"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1055",
+                    "TechniqueName": "Process Injection"
+                }
+            ],
+            "Procedure": "Reflectively inject SDelete binary via the wipe function"
+        },
+        {
+            "Substep": "20.A.1",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1085",
+                    "TechniqueName": "Rundll32"
+                }
+            ],
+            "Procedure": "Execution of Run key persistence (via the VoidFunc function of kxwn.lock payload)"
+        },
+        {
+            "Substep": "20.A.2",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1084",
+                    "TechniqueName": "Windows Management Instrumentation Event Subscription"
+                }
+            ],
+            "Procedure": "Execution of WMI persistence triggered by logon of user Oscar"
+        },
+        {
+            "Substep": "20.A.3",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1086",
+                    "TechniqueName": "PowerShell"
+                }
+            ],
+            "Procedure": "PowerShell callback spawned from WMI persistence"
+        },
+        {
+            "Substep": "20.B.1",
+            "Tactics": [
+                {
+                    "TacticName": "Lateral Movement",
+                    "TacticId": "TA0008"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1097",
+                    "TechniqueName": "Pass the Ticket"
+                }
+            ],
+            "Procedure": "Create and use Kerberos Golden Ticket"
+        },
+        {
+            "Substep": "20.B.2",
+            "Tactics": [
+                {
+                    "TacticName": "Execution",
+                    "TacticId": "TA0002"
+                },
+                {
+                    "TacticName": "Lateral Movement",
+                    "TacticId": "TA0008"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1028",
+                    "TechniqueName": "Windows Remote Management"
+                }
+            ],
+            "Procedure": "Establish WinRM connection to remote host"
+        },
+        {
+            "Substep": "20.B.3",
+            "Tactics": [
+                {
+                    "TacticName": "Persistence",
+                    "TacticId": "TA0003"
+                }
+            ],
+            "Techniques": [
+                {
+                    "TechniqueId": "T1136",
+                    "TechniqueName": "Create Account"
+                }
+            ],
+            "Procedure": "Add new user to remote host via WinRM session"
+        }
+    ]
+}

@@ -1,0 +1,3380 @@
+{
+  "PublicRelease": "©2020 The MITRE Corporation. ALL RIGHTS RESERVED. Approved for Public Release; Distribution Unlimited. Public Release Case Number 19-03607-4",
+  "Techniques": [
+    {
+      "Steps": [
+        {
+          "Criteria": "Evidence of the right-to-left override character (U+202E) in the rcs.3aka.doc process ​OR the original filename (cod.3aka.scr)",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (red indicator) called \"Masquerading\" was generated due to the Suspicious Indicator \"Executed process with left to right character override.\"",
+              "DetectionType": "Technique",
+              "Footnotes": [
+                "The vendor added a new detection for the technique."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)",
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1962.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Used unicode right-to-left override (RTLO) character to obfuscate file name rcs.3aka3.doc (originally cod.3aka.scr)",
+          "SubStep": "1.A.2"
+        },
+        {
+          "Criteria": "Evidence that accesschk.exe is not the legitimate Sysinternals tool",
+          "Detections": [
+            {
+              "DetectionNote": "A General detection was generated for \"Malicious file(s) reputation report(s)\" on accesschk.exe.",
+              "DetectionType": "General",
+              "Footnotes": [
+                "Since the investigation was manually started, delaying the detection, it is identified as Delayed (Manual). "
+              ],
+              "Modifiers": [
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1631.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed the hash of accesschk.exe which can be used to verify it is not the legitimate Sysinternals tool.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-14603.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Masqueraded a Chrome password dump tool as accesscheck.exe, a legitimate Sysinternals tool",
+          "SubStep": "6.A.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1036",
+      "TechniqueName": "Masquerading"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing Get-Process",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Enumerated current running processes using PowerShell",
+          "SubStep": "4.B.1"
+        },
+        {
+          "Criteria": "powershell.exe executing $PID",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1957.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the current process ID using PowerShell",
+          "SubStep": "4.C.5"
+        },
+        {
+          "Criteria": "powershell.exe executing Get-Process",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Enumerated processes on remote host Scranton (10.0.1.4) using PowerShell",
+          "SubStep": "8.A.3"
+        },
+        {
+          "Criteria": "powershell.exe executing a Get-WmiObject query for Win32_Process",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1928.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Checked that processes such as procexp.exe, taskmgr.exe, or wireshark.exe are not running using PowerShell",
+          "SubStep": "11.A.8"
+        },
+        {
+          "Criteria": "powershell.exe executing the CreateToolhelp32Snapshot API",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1938.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated running processes using the CreateToolhelp32Snapshot API",
+          "SubStep": "13.D.1"
+        },
+        {
+          "Criteria": "powershell.exe executing Get-Process",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Enumerated and tracked PowerShell processes using PowerShell",
+          "SubStep": "14.B.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1057",
+      "TechniqueName": "Process Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "accesschk.exe reading files within %APPDATALOCAL%\\Google\\chrome\\user data\\default\\",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Read the Chrome SQL database file to extract encrypted credentials",
+          "SubStep": "6.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0006",
+          "TacticName": "Credential Access"
+        }
+      ],
+      "TechniqueId": "T1081",
+      "TechniqueName": "Credentials in Files"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "WMI Process (WmiPrvSE.exe) executing powershell.exe",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed WmiPrvSE.exe executing powershell.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1854.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Created and executed a WMI class using PowerShell",
+          "SubStep": "14.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        }
+      ],
+      "TechniqueId": "T1047",
+      "TechniqueName": "Windows Management Instrumentation"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing the NetUserGetGroups API",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1957.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated user's domain group membership via the NetUserGetGroups API",
+          "SubStep": "4.C.9"
+        },
+        {
+          "Criteria": "powershell.exe executing the NetUserGetLocalGroups API",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1956.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated user's local group membership via the NetUserGetLocalGroups API",
+          "SubStep": "4.C.11"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1069",
+      "TechniqueName": "Permission Groups Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "The rcs.3aka3.doc process creating the file monkey.png",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed rcs.3aka3.doc creating monkey.png.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1464.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dropped stage 2 payload (monkey.png) to disk",
+          "SubStep": "3.A.1"
+        },
+        {
+          "Criteria": "powershell.exe creating the file SysinternalsSuite.zip",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the file write of the ZIP by PowerShell. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1508.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dropped additional tools (SysinternalsSuite.zip) to disk over C2 channel (192.168.0.5)",
+          "SubStep": "4.A.1"
+        },
+        {
+          "Criteria": "The file python.exe created on Scranton (10.0.1.4)",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the file create event of python.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1727.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Copied python.exe payload from a WebDAV share (192.168.0.4) to remote host Scranton (10.0.1.4)",
+          "SubStep": "8.B.1"
+        },
+        {
+          "Criteria": "python.exe creating the file rar.exe",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed a file created event for rar.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1751.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dropped rar.exe to disk on remote host Scranton (10.0.1.4) ",
+          "SubStep": "9.A.1"
+        },
+        {
+          "Criteria": "python.exe creating the file sdelete64.exe",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed File Created event for sdelete64.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1752.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dropped sdelete.exe to disk on remote host Scranton (10.0.1.4) ",
+          "SubStep": "9.A.2"
+        },
+        {
+          "Criteria": "powershell.exe downloading and/or the file write of m.exe",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the file create event for m.exe into the System32 folder.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "MVISION Endpoint would have blocked this step due to a signature-based detection for code being executed in a PowerShell session. "
+              ],
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1850.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Downloaded and dropped Mimikatz (m.exe) to disk",
+          "SubStep": "14.B.3"
+        },
+        {
+          "Criteria": "File write of m.exe by the WinRM process (wsmprovhost.exe)",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed creation of m.exe (identified as Mimikatz by the file metadata) in the System32 directory by wsmprovhost.exe.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "MVISION Endpoint would have blocked the malicious file m.exe due to a cloud-based classification detected by Advanced Threat Protection signature."
+              ],
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1876.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1872.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dropped Mimikatz (m.exe) to disk on the domain controller host NewYork (10.0.0.4) over a WinRM connection",
+          "SubStep": "16.D.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0011",
+          "TacticName": "Command and Control"
+        }
+      ],
+      "TechniqueId": "T1105",
+      "TechniqueName": "Remote File Copy"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "cmd.exe spawning from the rcs.3aka3.doc​ process",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed rcs.3aka3.doc spawning cmd.exe. The telemetry was correlated to a parent alert for rcs.3aka3.doc spawning cmd.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1436.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1429.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1425.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Spawned interactive cmd.exe",
+          "SubStep": "1.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        }
+      ],
+      "TechniqueId": "T1059",
+      "TechniqueName": "Command-Line Interface"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "Evidence that the file python.exe is packed",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure. ",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "python.exe payload was packed with UPX",
+          "SubStep": "8.B.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1045",
+      "TechniqueName": "Software Packing"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing $env:COMPUTERNAME",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1957.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the computer hostname using PowerShell",
+          "SubStep": "4.C.3"
+        },
+        {
+          "Criteria": "powershell.exe executing​ Gwmi Win32_OperatingSystem",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1957.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the OS version using PowerShell",
+          "SubStep": "4.C.6"
+        },
+        {
+          "Criteria": "powershell.exe executing a Get-WmiObject gwmi queries for Win32_BIOS and Win32_ComputerSystem",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Enumerated computer manufacturer, model, and version information using PowerShell",
+          "SubStep": "11.A.4"
+        },
+        {
+          "Criteria": "powershell.exe executing the GetComputerNameEx API",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1931.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the computer name using the GetComputerNameEx API",
+          "SubStep": "13.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1082",
+      "TechniqueName": "System Information Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing the GetAsyncKeyState API",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"Input Capture\" was generated due to PowerShell key logging module activity.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1662.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Captured user keystrokes using the GetAsyncKeyState API",
+          "SubStep": "7.A.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0009",
+          "TacticName": "Collection"
+        }
+      ],
+      "TechniqueId": "T1056",
+      "TechniqueName": "Input Capture"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "Established network channel over port 1234",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (blue indicator) called \"Commonly Used Port\" showed rcs.3aka3.doc connecting to 192.168.0.5 on TCP port 1234. ",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1402.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1401.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed rcs.3aka3.doc process connecting to 192.168.0.5 on TCP port 1234.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1402.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established C2 channel (192.168.0.5) via rcs.3aka3.doc payload over TCP port 1234",
+          "SubStep": "1.A.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0011",
+          "TacticName": "Command and Control"
+        }
+      ],
+      "TechniqueId": "T1065",
+      "TechniqueName": "Uncommonly Used Port"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "net.exe adding the user Toby ",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"Create Account\" was generated for the addition of the new user Toby.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1923.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed addition of the new user Toby based on Windows Event ID 4720.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1923.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1924.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Added a new user to the remote host Scranton (10.0.1.4) using net.exe",
+          "SubStep": "20.B.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0003",
+          "TacticName": "Persistence"
+        }
+      ],
+      "TechniqueId": "T1136",
+      "TechniqueName": "Create Account"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe creating the file draft.zip",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the creation of Draft.Zip.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1448.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Staged files for exfiltration into ZIP (Draft.zip) using PowerShell",
+          "SubStep": "2.A.5"
+        },
+        {
+          "Criteria": "powershell.exe creating the file working.zip",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed a File Created event for powershell.exe creating working.zip. The detection was correlated to a parent alert for PowerShell. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1787.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Staged files for exfiltration into ZIP (working.zip in AppData directory) using PowerShell",
+          "SubStep": "9.B.5"
+        },
+        {
+          "Criteria": "powershell.exe creating the file \\WindowsParentalControlMigration\\MITRE-ATTACK-EVALS.HTML",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Staged collected file into directory using PowerShell",
+          "SubStep": "17.B.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0009",
+          "TacticName": "Collection"
+        }
+      ],
+      "TechniqueId": "T1074",
+      "TechniqueName": "Data Staged"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe creating the file hostui.lnk in the Startup folder",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"Registry Run Keys / Startup Folder\" was generated due to an application being set to run when Windows starts. \n",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-14580.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed the creation of hostui.lnk in the Startup folder. The event was correlated to a parent alert for a suspicious PowerShell.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1604.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Created a LNK file (hostui.lnk) in the Startup folder that executes on login",
+          "SubStep": "5.B.1"
+        },
+        {
+          "Criteria": "Evidence that the file hostui.lnk (which executes hostui.bat as a byproduct) was executed from the Startup Folder",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Executed LNK payload (hostui.lnk) in Startup Folder on user login",
+          "SubStep": "10.B.1"
+        },
+        {
+          "Criteria": "Addition of the Webcache subkey in HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure. ",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Established Registry Run key persistence using PowerShell",
+          "SubStep": "11.A.11"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0003",
+          "TacticName": "Persistence"
+        }
+      ],
+      "TechniqueId": "T1060",
+      "TechniqueName": "Registry Run Keys / Startup Folder"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe spawning from cmd.exe",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (blue indicator) called \"PowerShell\" was generated due to the PowerShell command being executed from another process. The technique was correlated to a parent alert for rcs.3aka3.doc spawning cmd.exe.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1429.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed cmd.exe launching powershell.exe. The telemetry was correlated to a parent alert for rcs.3aka3.doc spawning cmd.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1436.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Spawned interactive powershell.exe",
+          "SubStep": "1.B.2"
+        },
+        {
+          "Criteria": "powershell.exe spawning from powershell.exe",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique detection called \"PowerShell\" was generated due to PowerShell being executed by another script. ",
+              "DetectionType": "Technique",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1517.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed a new powershell.exe spawning from powershell.exe. The detection was correlated to a parent alert for PowerShell. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1519.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1520.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Spawned interactive powershell.exe",
+          "SubStep": "4.A.2"
+        },
+        {
+          "Criteria": "powershell.exe​ spawning from python.exe",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed python.exe executing powershell.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1755.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Spawned interactive powershell.exe",
+          "SubStep": "9.B.1"
+        },
+        {
+          "Criteria": "powershell.exe spawning from from the schemas ADS (powershell.exe)",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"PowerShell\" was generated for powershell.exe spawned from a PowerShell stager.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1824.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1817.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed powershell.exe spawned from a PowerShell stager.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Executed PowerShell stager payload",
+          "SubStep": "11.A.12"
+        },
+        {
+          "Criteria": "SYSTEM-level powershell.exe spawned from the powershell.exe",
+          "Detections": [
+            {
+              "DetectionNote": "A General alert detection (yellow indicator) was generated by a SYSTEM-level powershell.exe spawning from wmiprvse.exe. ",
+              "DetectionType": "General",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1916.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed a SYSTEM-level PowerShell spawning from wmiprvse.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1917.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed PowerShell payload from WMI event subscription persistence",
+          "SubStep": "20.A.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        }
+      ],
+      "TechniqueId": "T1086",
+      "TechniqueName": "PowerShell"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing Get-Clipboard",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Captured clipboard contents using PowerShell",
+          "SubStep": "7.A.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0009",
+          "TacticName": "Collection"
+        }
+      ],
+      "TechniqueId": "T1115",
+      "TechniqueName": "Clipboard Data"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "Evidence that the network data sent over the C2 channel is HTTPS",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Used HTTPS to transport C2 (192.168.0.5) traffic",
+          "SubStep": "3.B.4"
+        },
+        {
+          "Criteria": "Established network channel over the HTTPS protocol",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure. ",
+              "DetectionType": "None",
+              "Footnotes": [
+                "Although telemetry showed a network connection over port 443 no protocol was identified for this traffic, so a detection does not apply."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Used HTTPS to transport C2 (192.168.0.4) traffic",
+          "SubStep": "11.A.14"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0011",
+          "TacticName": "Command and Control"
+        }
+      ],
+      "TechniqueId": "T1071",
+      "TechniqueName": "Standard Application Layer Protocol"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "Network connection to Scranton (10.0.1.4) over port 5985",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed a connection to Scranton (10.0.1.4) on port 5985. The detection was correlated to a parent alert for PowerShell. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1718.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established WinRM connection to remote host Scranton (10.0.1.4)",
+          "SubStep": "8.A.2"
+        },
+        {
+          "Criteria": "Network connection to NewYork (10.0.0.4) over port 5985",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique detection alert (orange indicator) called \"Windows Remote Management\" was generated for powershell.exe making a network connection to remote host NewYork (10.0.0.4) over port 5985.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1867.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed a network connection to remote host NewYork (10.0.0.4) over port 5985.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1869.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established a WinRM connection to the domain controller host NewYork (10.0.0.4) ",
+          "SubStep": "16.C.1"
+        },
+        {
+          "Criteria": "Network connection to Scranton (10.0.1.4) over port 5985",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (orange indicator) called \"Windows Remote Management\" was generated for a \"PowerShell script doing Windows Remote Management (WinRM) activity.\"",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1925.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1921.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed PowerShell with an open network connection to remote host Scranton (10.0.1.4) over port 5985.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1925.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established a WinRM connection to the remote host Scranton (10.0.1.4) using the Golden Ticket as credentials",
+          "SubStep": "20.B.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        },
+        {
+          "TacticId": "TA0008",
+          "TacticName": "Lateral Movement"
+        }
+      ],
+      "TechniqueId": "T1028",
+      "TechniqueName": "Windows Remote Management"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "The rcs.3aka3.doc process spawning from explorer.exe",
+          "Detections": [
+            {
+              "DetectionNote": "A General alert detection (red indicator) called \"Running Process(es) with suspicious name\" was generated for the execution of a process with a suspicious name.",
+              "DetectionType": "General",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1665.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed explorer.exe executing rcs.3aka3.doc.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1403.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1399.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "User Pam executed payload rcs.3aka3.doc",
+          "SubStep": "1.A.1"
+        },
+        {
+          "Criteria": "powershell.exe spawning from explorer.exe",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed explorer.exe executing powershell.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1814.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "User Oscar executed payload 37486-the-shocking-truth-about-election-rigging-in-america.rtf.lnk",
+          "SubStep": "11.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        }
+      ],
+      "TechniqueId": "T1204",
+      "TechniqueName": "User Execution"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing a Registry query for HKLM\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Enumerated installed software via the Registry (Wow6432 Uninstall key) using PowerShell",
+          "SubStep": "12.C.1"
+        },
+        {
+          "Criteria": "powershell.exe executing a Registry query for HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Enumerated installed software via the Registry (Uninstall key) using PowerShell",
+          "SubStep": "12.C.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1012",
+      "TechniqueName": "Query Registry"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe reading files in C:\\Users\\Pam\\",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Recursively collected files found in C:\\Users\\Pam\\ using PowerShell",
+          "SubStep": "2.A.3"
+        },
+        {
+          "Criteria": "powershell.exe reading files in C:\\Users\\pam\\Downloads\\",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Read data in the user's Downloads directory using PowerShell",
+          "SubStep": "7.B.1"
+        },
+        {
+          "Criteria": "powershell.exe reading files in C:\\Users\\Pam\\",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Recursively collected files found in C:\\Users\\Pam\\ using PowerShell",
+          "SubStep": "9.B.4"
+        },
+        {
+          "Criteria": "powershell.exe reading the file MITRE-ATTACK-EVALS.HTML",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Read and collected a local file using PowerShell",
+          "SubStep": "17.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0009",
+          "TacticName": "Collection"
+        }
+      ],
+      "TechniqueId": "T1005",
+      "TechniqueName": "Data from Local System"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing (Get-)ChildItem",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Scripted search of filesystem for document and media files using PowerShell ",
+          "SubStep": "2.A.2"
+        },
+        {
+          "Criteria": "powershell.exe executing (Get-)ChildItem​",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Scripted search of filesystem for document and media files using PowerShell ",
+          "SubStep": "9.B.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0009",
+          "TacticName": "Collection"
+        }
+      ],
+      "TechniqueId": "T1119",
+      "TechniqueName": "Automated Collection"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "The NetUserGetGroups API function loaded into powershell.exe from Netapi32.dll",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Executed API call by reflectively loading Netapi32.dll",
+          "SubStep": "4.C.10"
+        },
+        {
+          "Criteria": "The NetUserGetLocalGroups API function loaded into powershelle.exe from Netapi32.dll",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1956.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed API call by reflectively loading Netapi32.dll",
+          "SubStep": "4.C.12"
+        },
+        {
+          "Criteria": "hostui.exe executing the\nCreateProcessWithToken API",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though data showed svchost.exe with -seclogon flag spawning before PowerShell.",
+              "DetectionType": "None",
+              "Footnotes": [
+                "MVISION Endpoint would have blocked this activity. "
+              ],
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1793.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1800.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed PowerShell payload via the CreateProcessWithToken API",
+          "SubStep": "10.B.2"
+        },
+        {
+          "Criteria": "powershell.exe executing the ConvertSidToStringSid API function by loading Advapi32.dll",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing PowerShell reflectively loading Advapi32.dll inorder to execute the ConvertSidToStringSid API function was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1954.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed the ConvertSidToStringSid API call by reflectively loading Advapi32.dll",
+          "SubStep": "16.B.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        }
+      ],
+      "TechniqueId": "T1106",
+      "TechniqueName": "Execution through API"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "Evidence that the network data sent over the C2 channel is encrypted",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Used RC4 stream cipher to encrypt C2 (192.168.0.5) traffic",
+          "SubStep": "1.A.4"
+        },
+        {
+          "Criteria": "Evidence that the network data sent over the C2 channel is encrypted",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Used HTTPS to encrypt C2 (192.168.0.5) traffic",
+          "SubStep": "3.B.5"
+        },
+        {
+          "Criteria": "Evidence that the network data sent over the C2 channel is encrypted",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Footnotes": [
+                "Although telemetry showed a network connection over port 443 no protocol was identified for this traffic, so a detection does not apply."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Used HTTPS to encrypt C2 (192.168.0.4) traffic",
+          "SubStep": "11.A.15"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0011",
+          "TacticName": "Command and Control"
+        }
+      ],
+      "TechniqueId": "T1032",
+      "TechniqueName": "Standard Cryptographic Protocol"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "net.exe with command-line arguments then making a network connection to a public IP over port 443",
+          "Detections": [
+            {
+              "DetectionNote": "A Tactic alert detection (yellow indicator) called \"Collection\" was generated for net.exe having active network connections. ",
+              "DetectionType": "Tactic",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1905.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "A General detection was generated for a socket opened by a \"process that commonly does not do it\".",
+              "DetectionType": "General",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1898.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed net.exe with command-line arguments to connect to a OneDrive URL as well as net.exe subsequently making a network connection to public IPs over port 443. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1898.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Mapped a network drive to an online OneDrive account using PowerShell",
+          "SubStep": "18.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1102",
+      "TechniqueName": "Web Service"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing a Get-WmiObject query for Win32_PnPEntity",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Enumerated devices/adapters to check for presence of VirtualBox driver(s) using PowerShell",
+          "SubStep": "11.A.5"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1120",
+      "TechniqueName": "Peripheral Device Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing Expand-Archive",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell writing the files that were decompressed from the ZIP. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1526.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Decompressed ZIP (SysinternalsSuite.zip) file using PowerShell",
+          "SubStep": "4.A.3"
+        },
+        {
+          "Criteria": "certutil.exe decoding kxwn.lock",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique detection was generated for a file being decoded via certutil. ",
+              "DetectionType": "Technique",
+              "Footnotes": [
+                "The vendor added a new detection for the technique."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-14747.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed the certutil.exe process and corresponding file write of the kxwn.lock payload. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "MVISION Endpoint would have blocked this activity due to an Adaptive Threat Protection signature for execution of certutil.exe. "
+              ],
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1823.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Decoded an embedded DLL payload to disk using certutil.exe",
+          "SubStep": "11.A.10"
+        },
+        {
+          "Criteria": "powershell.exe executing Get-WmiInstance",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1945.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Read and decoded Mimikatz output from a WMI class property using PowerShell",
+          "SubStep": "14.B.6"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1140",
+      "TechniqueName": "Deobfuscate/Decode Files or Information"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing the schemas ADS via Get-Content and IEX",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique detection called \"NTFS File Attributes\" was generated due to execution of schemas ADS by powershell.exe.\n",
+              "DetectionType": "Technique",
+              "Footnotes": [
+                "The vendor added a new detection for the technique."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-2006.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing the schemas ADS with Get-Content and IEX.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1817.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed an alternate data stream (ADS) using PowerShell",
+          "SubStep": "11.A.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1096",
+      "TechniqueName": "NTFS File Attributes"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "python.exe spawned by PSEXESVC.exe",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed python.exe spawned by PSEXESVC.exe. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "The malicious Python process would have been blocked by MVISION Endpoint  by a Real Protect machine learning model based on process behavior. "
+              ],
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1750.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed python.exe using PSExec",
+          "SubStep": "8.C.3"
+        },
+        {
+          "Criteria": "javamtsup.exe spawning from services.exe",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Executed persistent service (javamtsup) on system startup",
+          "SubStep": "10.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        }
+      ],
+      "TechniqueId": "T1035",
+      "TechniqueName": "Service Execution"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing Compress-7Zip with the password argument used for encryption",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure though script block log were manually recovered from the system, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1675.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Encrypted data from the user's Downloads directory using PowerShell",
+          "SubStep": "7.B.3"
+        },
+        {
+          "Criteria": "powershell.exe executing rar.exe with the -a parameter for a password to use for encryption",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing rar.exe with command-line arguments.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1764.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Encrypted staged ZIP (working.zip in AppData directory) into working.zip (on Desktop) using rar.exe",
+          "SubStep": "9.B.6"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0010",
+          "TacticName": "Exfiltration"
+        }
+      ],
+      "TechniqueId": "T1022",
+      "TechniqueName": "Data Encrypted"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "rundll32.exe executing kxwn.lock",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (orange; medium risk) called \"Rundll32\" was generated due to rundll32.exe executing kxwn.lock.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-14750.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed rundll32.exe executing kxwn.lock.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1915.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed Run key persistence payload on user login using RunDll32",
+          "SubStep": "20.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        }
+      ],
+      "TechniqueId": "T1085",
+      "TechniqueName": "Rundll32"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe making LDAP queries over port 389 to the Domain Controller (10.0.0.4)",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe establishing a connection to NewYork (10.0.0.4) over TCP port 389. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1714.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1712.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated remote systems using LDAP queries",
+          "SubStep": "8.A.1"
+        },
+        {
+          "Criteria": "powershell.exe making LDAP queries over port 389 via functions from System.DirectoryServices.dll",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though a real time search showed that the System.DirectoryServices.dll module was loaded by powershell.exe.",
+              "DetectionType": "None",
+              "Footnotes": [
+                "MVISION Endpoint would have blocked this activity. "
+              ],
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1860.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the domain controller host NewYork (10.0.0.4) using LDAP queries",
+          "SubStep": "16.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1018",
+      "TechniqueName": "Remote System Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "Deletion of of the HKCU\\Software\\Classes\\Folder\\shell\\Open\\command subkey",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Modified the Registry to remove artifacts of COM hijacking",
+          "SubStep": "3.C.1"
+        },
+        {
+          "Criteria": "Deletion of the HKCU\\Software\\Classes\\Folder\\shell\\Open\\command subkey",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Modified the Registry to remove artifacts of COM hijacking using PowerShell",
+          "SubStep": "14.A.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1112",
+      "TechniqueName": "Modify Registry"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell executing Copy-Item pointing to an attack-controlled WebDav network share (192.168.0.4:80)",
+          "Detections": [
+            {
+              "DetectionNote": "A General alert detection (low severity) was generated due to rundll32.exe connecting to 192.168.0.4 via WebDav.",
+              "DetectionType": "General",
+              "Footnotes": [
+                "The vendor added a new detection for the technique."
+              ],
+              "Modifiers": [
+                "Alert",
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1966.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Exfiltrated collection (OfficeSupplies.7z) to WebDAV network share using PowerShell",
+          "SubStep": "7.B.4"
+        },
+        {
+          "Criteria": "powershell.exe executing Copy-Item pointing to drive mapped to an attack-controlled OneDrive account",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.  ",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Exfiltrated staged collection to an online OneDrive account using PowerShell",
+          "SubStep": "18.A.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0010",
+          "TacticName": "Exfiltration"
+        }
+      ],
+      "TechniqueId": "T1048",
+      "TechniqueName": "Exfiltration Over Alternative Protocol"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "Injection into PowerShell via Invoke-ReflectivePEInjection",
+          "Detections": [
+            {
+              "DetectionNote": "Due to execution inconsistencies Step 19 has been omitted from the evaluation results.",
+              "DetectionType": "N/A",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Reflectively injected SDelete binary into PowerShell",
+          "SubStep": "19.A.2"
+        },
+        {
+          "Criteria": "Injection into PowerShell via Invoke-ReflectivePEInjection",
+          "Detections": [
+            {
+              "DetectionNote": "Due to execution inconsistencies Step 19 has been omitted from the evaluation results.",
+              "DetectionType": "N/A",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Reflectively injected SDelete binary into PowerShell",
+          "SubStep": "19.B.2"
+        },
+        {
+          "Criteria": "Injection into PowerShell via Invoke-ReflectivePEInjection",
+          "Detections": [
+            {
+              "DetectionNote": "Due to execution inconsistencies Step 19 has been omitted from the evaluation results.",
+              "DetectionType": "N/A",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Reflectively injected SDelete binary into PowerShell",
+          "SubStep": "19.C.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1055",
+      "TechniqueName": "Process Injection"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "accesschk.exe executing the CryptUnprotectedData API",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Executed the CryptUnprotectedData API call to decrypt Chrome passwords",
+          "SubStep": "6.A.2"
+        },
+        {
+          "Criteria": "powershell.exe injecting into lsass.exe OR lsass.exe reading Registry keys under HKLM:\\SAM\\SAM\\Domains\\Account\\Users\\",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"Credential Dumping\" was generated due to Suspicious Indicator \"LSASS process memory read by another process.\" ",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1646.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dumped password hashes from the Windows Registry by injecting a malicious DLL into Lsass.exe",
+          "SubStep": "6.C.1"
+        },
+        {
+          "Criteria": "m.exe injecting into lsass.exe to dump credentials",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (orange indicator) called \"Credential Dumping\" was generated due the suspicious indicator \"Mimikatz executed a credential dumping module.\"",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1851.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"Credential Dumping\" was generated due the suspicious indicator \"LSASS process memory read by other process.\"",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1852.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dumped plaintext credentials using Mimikatz (m.exe)",
+          "SubStep": "14.B.4"
+        },
+        {
+          "Criteria": "m.exe injecting into lsass.exe to dump credentials",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"Credential Dumping\" was generated due to the Suspicious Indicator \"LSASS process memory read by other process.\" ",
+              "DetectionType": "Technique",
+              "Footnotes": [
+                "MVISION Endpoint would have blocked the malicious file m.exe due to a cloud-based classification detected by Advanced Threat Protection signature."
+              ],
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1873.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "A General alert detection (yellow indicator) called \"Credential Access\" was generated for m.exe injecting code into a foreign process.",
+              "DetectionType": "General",
+              "Footnotes": [
+                "MVISION Endpoint would have blocked the malicious file m.exe due to a cloud-based classification detected by Advanced Threat Protection signature."
+              ],
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1875.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dumped the KRBTGT hash on the domain controller host NewYork (10.0.0.4) using Mimikatz (m.exe)",
+          "SubStep": "16.D.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0006",
+          "TacticName": "Credential Access"
+        }
+      ],
+      "TechniqueId": "T1003",
+      "TechniqueName": "Credential Dumping"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe modifying the creation, last access, and last write times of kxwn.lock",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Modified the time attributes of the kxwn.lock persistence payload using PowerShell",
+          "SubStep": "12.A.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1099",
+      "TechniqueName": "Timestomp"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "Successful logon as user Pam on Scranton (10.0.1.4) ",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed a valid logon on Scranton (10.0.1.4) as user Pam.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1731.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Logged on to remote host Scranton (10.0.1.4) using valid credentials for user Pam",
+          "SubStep": "8.C.1"
+        },
+        {
+          "Criteria": "Successful logon as user MScott on NewYork (10.0.0.4) ",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed a successful logon on NewYork (10.0.0.4) as user MScott.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1871.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Logged on to the domain controller host NewYork (10.0.0.4) using valid credentials for user MScott ",
+          "SubStep": "16.C.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1078",
+      "TechniqueName": "Valid Accounts"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing $env:USERNAME",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1957.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the current username using PowerShell",
+          "SubStep": "4.C.2"
+        },
+        {
+          "Criteria": "powershell.exe executing a Get-WmiObject query for Win32_ComputerSystem",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Checked that the username is not related to admin or a generic value (ex: user) using PowerShell",
+          "SubStep": "11.A.6"
+        },
+        {
+          "Criteria": "powershell.exe executing the GetUserNameEx API",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1936.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the current username using the GetUserNameEx API",
+          "SubStep": "13.C.1"
+        },
+        {
+          "Criteria": "powershell.exe executing $env:UserName",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1949.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated logged on users using PowerShell",
+          "SubStep": "15.A.1"
+        },
+        {
+          "Criteria": "powershell.exe executing the ConvertSidToStringSid API",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1953.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the domain SID (from current user SID) using the ConvertSidToStringSid API",
+          "SubStep": "16.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1033",
+      "TechniqueName": "System Owner/User Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "High integrity powershell.exe spawning from control.exe​​ (spawned from sdclt.exe)",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed control.exe creating a high integrity powershell.exe.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "MVISION Endpoint would have blocked this step due to a signature-based detection for code being executed in a PowerShell session. "
+              ],
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1468.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1467.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed elevated PowerShell payload",
+          "SubStep": "3.B.2"
+        },
+        {
+          "Criteria": "High integrity powrshell.exe spawning from control.exe​​ (spawned from sdclt.exe)",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed a new High Integrity PowerShell callback spawned from control.exe (spawned from sdclt.exe). ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "MVISION Endpoint would have blocked the malicious script from running in the PowerShell session due to a Real Protect machine learning model detection. "
+              ],
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1844.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed elevated PowerShell payload",
+          "SubStep": "14.A.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0004",
+          "TacticName": "Privilege Escalation"
+        }
+      ],
+      "TechniqueId": "T1088",
+      "TechniqueName": "Bypass User Account Control"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "sdelete64.exe deleting the file rcs.3aka3.doc",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"File Deletion\" was generated due to sdelete64.exe deleting rcs.3aka3.doc.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1545.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed sdelete.exe running with command-line arguments to delete the file. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1548.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Deleted rcs.3aka3.doc on disk using SDelete",
+          "SubStep": "4.B.2"
+        },
+        {
+          "Criteria": "sdelete64.exe deleting the file draft.zip",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"File Deletion\" was generated due to sdelete64.exe deleting Draft.Zip.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1544.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed sdelete.exe running with command-line arguments to delete the file.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1547.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Deleted Draft.zip on disk using SDelete",
+          "SubStep": "4.B.3"
+        },
+        {
+          "Criteria": "sdelete64.exe deleting the file SysinternalsSuite.zip",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"File Deletion\" was generated due to sdelete64.exe deleting SysinterlsSuite.zip.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1539.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed sdelete.exe running with command-line arguments to delete the file.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1549.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Deleted SysinternalsSuite.zip on disk using SDelete",
+          "SubStep": "4.B.4"
+        },
+        {
+          "Criteria": "sdelete64.exe deleting the file rar.exe",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"File Deletion\" was generated when sdelete64.exe with command-line arguments was used to delete rar.exe.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1771.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed sdelete64.exe with command-line arguments to delete rar.exe. The event was correlated to a parent alerts of a suspicious python.exe process.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1779.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Deleted rar.exe on disk using SDelete",
+          "SubStep": "9.C.1"
+        },
+        {
+          "Criteria": "sdelete64.exe deleting the file \\Desktop\\working.zip",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"File Deletion\" was generated when sdelete64.exe with command-line arguments was used to delete Desktop\\working.zip.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1773.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed sdelete64.exe with command-line arguments to delete Desktop\\working.zip. The event was correlated to a parent alerts of a suspicious python.exe process.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1775.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Deleted working.zip (from Desktop) on disk using SDelete",
+          "SubStep": "9.C.2"
+        },
+        {
+          "Criteria": "sdelete64.exe deleting the file \\AppData\\Roaming\\working.zip",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"File Deletion\" was generated when sdelete64.exe with command-line arguments was used to delete Roaming\\working.zip.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1772.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed sdelete64.exe with command-line arguments to delete Roaming\\working.zip. The event was correlated to a parent alerts of a suspicious python.exe process.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1777.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Deleted working.zip (from AppData directory) on disk using SDelete",
+          "SubStep": "9.C.3"
+        },
+        {
+          "Criteria": "cmd.exe deleting the file sdelete64.exe",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed deletion of sdelete64.exe. The event was correlated to a parent alerts of a suspicious python.exe process.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1781.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Deleted SDelete on disk using cmd.exe del command",
+          "SubStep": "9.C.4"
+        },
+        {
+          "Criteria": "File delete event for C:\\Windows\\System32\\m.exe",
+          "Detections": [
+            {
+              "DetectionNote": "Due to execution inconsistencies Step 19 has been omitted from the evaluation results.",
+              "DetectionType": "N/A",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Deleted Mimikatz (m.exe) on disk using SDelete",
+          "SubStep": "19.A.1"
+        },
+        {
+          "Criteria": "File delete event for C:\\Windows\\Temp\\WindowsParentalControlMigration.tmp",
+          "Detections": [
+            {
+              "DetectionNote": "Due to execution inconsistencies Step 19 has been omitted from the evaluation results.",
+              "DetectionType": "N/A",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Deleted exfiltrated data on disk using SDelete",
+          "SubStep": "19.B.1"
+        },
+        {
+          "Criteria": "File delete event for C:\\Windows\\Temp\\WindowsParentalControlMigration\\MITRE-ATTACK-EVALS.HTML",
+          "Detections": [
+            {
+              "DetectionNote": "Due to execution inconsistencies Step 19 has been omitted from the evaluation results.",
+              "DetectionType": "N/A",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Deleted staged data on disk using SDelete",
+          "SubStep": "19.C.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1107",
+      "TechniqueName": "File Deletion"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing the CopyFromScreen function from System.Drawing.dll",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure. ",
+              "DetectionType": "None",
+              "Footnotes": [
+                "MVISION Endpoint would have blocked this activity. "
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Captured and saved screenshots using PowerShell",
+          "SubStep": "7.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0009",
+          "TacticName": "Collection"
+        }
+      ],
+      "TechniqueId": "T1113",
+      "TechniqueName": "Screen Capture"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "outlook.exe spawning from svchost.exe or powershell.exe",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed outlook.exe spawning from svchost.exe, which is indicative of programmatic access to Outlook emails.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1878.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dumped messages from the local Outlook inbox using PowerShell",
+          "SubStep": "17.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0009",
+          "TacticName": "Collection"
+        }
+      ],
+      "TechniqueId": "T1114",
+      "TechniqueName": "Email Collection"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "Evidence that a PowerShell payload was within monkey.png",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (orange indicator) called \"Data Obfuscation\" was generated due to the Suspicious Indicator \"Script hidden in bitmap file executed through Powershell...\"",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Configuration Change (Detections)",
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1963.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed PowerShell extracting and executing the code embedded within monkey.png. The telemetry was correlated to a parent alert for rcs.3aka3.doc spawning cmd.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1964.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Embedded PowerShell payload in monkey.png using steganography",
+          "SubStep": "3.A.2"
+        },
+        {
+          "Criteria": "powershell.exe executing Set-WmiInstance",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1940.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Encoded and wrote Mimikatz output to a WMI class property using PowerShell",
+          "SubStep": "14.B.5"
+        },
+        {
+          "Criteria": "powershell.exe executing Set-Content",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1888.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Prepended the GIF file header to a compressed staging file using PowerShell",
+          "SubStep": "17.C.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1027",
+      "TechniqueName": "Obfuscated Files or Information"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe creating a certificate file exported from the system",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"Private Keys\" was generated due to Suspicious Indicator \"A new Private Key file with pfx/p12 extension was created.\"",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Configuration Change (Detections)",
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1965.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed file create event for a $RandomFileName.pfx file by powershell.exe. The detection was correlated to a parent alert for PowerShell. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1642.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Exported a local certificate to a PFX file using PowerShell",
+          "SubStep": "6.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0006",
+          "TacticName": "Credential Access"
+        }
+      ],
+      "TechniqueId": "T1145",
+      "TechniqueName": "Private Keys"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "Established network channel over port 443",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe connecting to 192.168.0.5 on TCP port 443.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1467.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1477.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established C2 channel (192.168.0.5) via PowerShell payload over TCP port 443",
+          "SubStep": "3.B.3"
+        },
+        {
+          "Criteria": "Established network channel over port 443",
+          "Detections": [
+            {
+              "DetectionNote": "A General detection was generated identifying a socket opened by a process that normally does not.",
+              "DetectionType": "General",
+              "Modifiers": []
+            },
+            {
+              "DetectionNote": "Telemetry showed powershell.exe making a network connection to the C2 (192.168.0.4) over TCP port 443.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1834.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1827.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established C2 channel (192.168.0.4) via PowerShell payload over port 443",
+          "SubStep": "11.A.13"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0011",
+          "TacticName": "Command and Control"
+        }
+      ],
+      "TechniqueId": "T1043",
+      "TechniqueName": "Commonly Used Port"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe creating the WindowsParentalControlMigration WMI filter, consumer, and binding created in root/subscription",
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"Windows Management Instrumentation Event Subscription\" was generated due to the Suspicious Indicator \"Detected WMI event subscription.\"",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1855.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed the WindowsParentalControlMigration WMI filter, consumer, and binding created in root/subscription.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1856.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established WMI event subscription persistence using PowerShell",
+          "SubStep": "15.A.2"
+        },
+        {
+          "Criteria": "The WMI process (wmiprvse.exe) executing powershell.exe",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed wmiprvse.exe executing powershell.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1916.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed WMI persistence on user login",
+          "SubStep": "20.A.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0003",
+          "TacticName": "Persistence"
+        }
+      ],
+      "TechniqueId": "T1084",
+      "TechniqueName": "Windows Management Instrumentation Event Subscription"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "hostui.exe manipulating the token of powershell.exe via the CreateProcessWithToken API OR \npowershell.exe executing with the stolen token of explorer.exe",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Manipulated the token of the PowerShell payload via the CreateProcessWithToken API",
+          "SubStep": "10.B.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1134",
+      "TechniqueName": "Access Token Manipulation"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing (Get-)ChildItem",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure. ",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Searched filesystem for document and media files using PowerShell ",
+          "SubStep": "2.A.1"
+        },
+        {
+          "Criteria": "powershell.exe executing $env:TEMP",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1957.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated user's temporary directory path using PowerShell",
+          "SubStep": "4.C.1"
+        },
+        {
+          "Criteria": "powershell.exe executing (Get-)ChildItem​",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Searched filesystem for document and media files using PowerShell",
+          "SubStep": "9.B.2"
+        },
+        {
+          "Criteria": "powershell.exe executing (Get-Item -Path \".\\\" -Verbose).FullName",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Checked that the payload is not inside a folder path that contains \"sample\" or is the length of a hash value using PowerShell",
+          "SubStep": "11.A.9"
+        },
+        {
+          "Criteria": "powershell.exe executing (gci ((gci env:windir).Value + '\\system32')",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Enumerated the System32 directory using PowerShell",
+          "SubStep": "12.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1083",
+      "TechniqueName": "File and Directory Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "Addition of the DelegateExecute ​subkey in ​HKCU\\Software\\Classes\\Folder\\shell\\open\\​​command​​",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the addition of the DelegateExecute Registry Value. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1476.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Modified the Registry to enable COM hijacking of sdclt.exe using PowerShell",
+          "SubStep": "3.B.1"
+        },
+        {
+          "Criteria": "Addition of the DelegateExecute subkey in HKCU\\Software\\Classes\\Folder\\shell\\open\\command",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the addition of the DelegateExecute Registry value.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1847.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Modified the Registry to enable COM hijacking of sdclt.exe using PowerShell",
+          "SubStep": "14.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1122",
+      "TechniqueName": "Component Object Model Hijacking"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing $env:USERDOMAIN",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1957.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the current domain name using PowerShell",
+          "SubStep": "4.C.4"
+        },
+        {
+          "Criteria": "powershell.exe executing a Get-WmiObject query for Win32_ComputerSystem",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Checked that the computer is joined to a domain using PowerShell",
+          "SubStep": "11.A.7"
+        },
+        {
+          "Criteria": "powershell.exe executing the NetWkstaGetInfo API",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1934.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the domain name using the NetWkstaGetInfo API",
+          "SubStep": "13.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1016",
+      "TechniqueName": "System Network Configuration Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing Invoke-Mimikatz with command-line arguments to create a golden ticket",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Created Kerberos Golden Ticket using Invoke-Mimikatz",
+          "SubStep": "20.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0008",
+          "TacticName": "Lateral Movement"
+        }
+      ],
+      "TechniqueId": "T1097",
+      "TechniqueName": "Pass the Ticket"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "SMB session to Scanton (10.0.1.4) over TCP port 445/135 OR evidence of usage of a Windows share",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed an SMB session from Nashua (10.0.1.6) to Scranton (10.0.1.4) over TCP port 135. The detection was correlated to a parent alert for PowerShell. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1743.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established SMB session to remote host Scranton's (10.0.1.4) IPC$ share using PsExec",
+          "SubStep": "8.C.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0008",
+          "TacticName": "Lateral Movement"
+        }
+      ],
+      "TechniqueId": "T1077",
+      "TechniqueName": "Windows Admin Shares"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe creating the Javamtsup service",
+          "Detections": [
+            {
+              "DetectionNote": "A General detection was generated for a service \"never seen in the baseline of the company.\"",
+              "DetectionType": "General",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1609.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed the creation of javamtsup service.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1609.png"
+                },
+                {
+                  "ScreenshotName": "McAfee-APT29-1585.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Created a new service (javamtsup) that executes a service binary (javamtsup.exe) at system startup",
+          "SubStep": "5.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0003",
+          "TacticName": "Persistence"
+        }
+      ],
+      "TechniqueId": "T1050",
+      "TechniqueName": "New Service"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing Compress-Archive",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Compressed and stored files into ZIP (Draft.zip) using PowerShell",
+          "SubStep": "2.A.4"
+        },
+        {
+          "Criteria": "powershell.exe creating the file OfficeSupplies.7z",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the file create event for OfficeSupplies.7z.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1690.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Compressed data from the user's Downloads directory into a ZIP file (OfficeSupplies.7z) using PowerShell",
+          "SubStep": "7.B.2"
+        },
+        {
+          "Criteria": "powershell.exe executing rar.exe",
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing rar.exe with command-line arguments.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1764.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Compressed staged ZIP (working.zip in AppData directory) into working.zip (on Desktop) using rar.exe",
+          "SubStep": "9.B.7"
+        },
+        {
+          "Criteria": "powershell.exe executing the ZipFile.CreateFromDirectory .NET method",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1885.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Compressed a staging directory using PowerShell",
+          "SubStep": "17.C.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0010",
+          "TacticName": "Exfiltration"
+        }
+      ],
+      "TechniqueId": "T1002",
+      "TechniqueName": "Data Compressed"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing a Get-WmiObject\nquery for Win32_BIOS",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Checked that the BIOS version and serial number are not associated with VirtualBox or VMware using PowerShell",
+          "SubStep": "11.A.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1497",
+      "TechniqueName": "Virtualization/Sandbox Evasion"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "The rcs.3aka3.doc process reading the file draft.zip while connected to the C2 channel",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Read and downloaded ZIP (Draft.zip) over C2 channel (192.168.0.5 over TCP port 1234)",
+          "SubStep": "2.B.1"
+        },
+        {
+          "Criteria": "python.exe reading the file working.zip while connected to the C2 channel",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Read and downloaded ZIP (working.zip on Desktop) over C2 channel (192.168.0.5 over TCP port 8443)",
+          "SubStep": "9.B.8"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0010",
+          "TacticName": "Exfiltration"
+        }
+      ],
+      "TechniqueId": "T1041",
+      "TechniqueName": "Exfiltration Over Command and Control Channel"
+    },
+    {
+      "Steps": [
+        {
+          "Criteria": "powershell.exe executing​ Get-WmiObject ...​ -Class AntiVirusProduct",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1957.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated anti-virus software using PowerShell",
+          "SubStep": "4.C.7"
+        },
+        {
+          "Criteria": "powershell.exe executing Get-WmiObject ...​​ -Class FireWallProduct",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though the script containing the variables in scope was manually recovered from the system by the analyst, so it is identified as Host Interrogation.",
+              "DetectionType": "None",
+              "Modifiers": [
+                "Host Interrogation",
+                "Delayed (Manual)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "McAfee-APT29-1958.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated firewall software using PowerShell",
+          "SubStep": "4.C.8"
+        },
+        {
+          "Criteria": "powershell.exe executing a Get-WmiObject query for AntiVirusProduct",
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Enumerated registered AV products using PowerShell",
+          "SubStep": "12.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1063",
+      "TechniqueName": "Security Software Discovery"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<script src="/webapp/js/evaluations.js"></script>
+<script src="/webapp/js/tactics.js"></script>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar"> <br>
+            <h3>Filter</h3>
+            <hr>
+            <h4>Round</h4>
+            <select id="evalSelect" onchange="getRoundEvals(this.value)" class="selectpicker">
+                <option selected disabled>Select A Round</option>
+                <option value='APT3'>Round 1 - APT3</option>
+                <option value='APT29'>Round 2 - APT29</option>
+            </select>
+            <br><br>
+            <h4>Evaluations</h4>
+            <select id="evalsSelect" onchange="getEvalInfo(this.value)" class="selectpicker">
+                <option selected disabled>Select An Evaluation</option>
+            </select>
+            <br><br>
+        </nav>
+        <main id="mainContentSection" role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="chart-tab" data-toggle="tab" href="#home" role="tab"
+                        aria-controls="home" aria-selected="true">Charts</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="chart-tab">
+                    <br>
+                    <div class="card shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title">Major Step Breakdown</h5>
+                            <div class="row"><canvas id="stepChart"></canvas></div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="card shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title">Sub Step Breakdown</h5>
+                            <div class="row"><canvas id="subStepChart"></canvas></div>
+                        </div>
+                    </div>
+
+                    <br><br>
+                    <div class="card shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title">Modifiers Breakdown</h5>
+                            <div class="row">
+                                <canvas style="width:100%; height:1%;" id="chart_modifiers_legend"></canvas>
+                            </div>
+                            <div class="row" id="div_modifiers_row"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+
+        </main>
+    </div>
+</div>
+
+
+{% endblock %}

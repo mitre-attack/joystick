@@ -1,0 +1,3506 @@
+{
+  "PublicRelease": "©2020 The MITRE Corporation. ALL RIGHTS RESERVED. Approved for Public Release; Distribution Unlimited. Public Release Case Number 19-03607-4",
+  "Techniques": [
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed NetUserGetGroups API function loaded into PowerShell from Netapi32.dll.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-13284.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-262.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-258.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed API call by reflectively loading Netapi32.dll",
+          "SubStep": "4.C.10"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed NetUserGetLocalGroups API function loaded into PowerShell from Netapi32.dll.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-260.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-262.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-13284.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed API call by reflectively loading Netapi32.dll",
+          "SubStep": "4.C.12"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Executed PowerShell payload via the CreateProcessWithToken API",
+          "SubStep": "10.B.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell reflectively loading Advapi32.dll inorder to execute the ConvertSidToStringSid API function.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-327.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-326.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed the ConvertSidToStringSid API call by reflectively loading Advapi32.dll",
+          "SubStep": "16.B.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        }
+      ],
+      "TechniqueId": "T1106",
+      "TechniqueName": "Execution through API"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing: $env:USERNAME. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-13284.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the current username using PowerShell",
+          "SubStep": "4.C.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the PowerShell gwmi query for Win32_ComputerSystem.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-289.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Checked that the username is not related to admin or a generic value (ex: user) using PowerShell",
+          "SubStep": "11.A.6"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell executing the GetUserNameEx API.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-308.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the current username using the GetUserNameEx API",
+          "SubStep": "13.C.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell script block executing $env:UserName.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-320.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated logged on users using PowerShell",
+          "SubStep": "15.A.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell executing the ConvertSidToStringSid API function.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-326.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the domain SID (from current user SID) using the ConvertSidToStringSid API",
+          "SubStep": "16.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1033",
+      "TechniqueName": "System Owner/User Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed a valid logon on Scranton (10.0.1.4) as user Pam.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-141.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Logged on to remote host Scranton (10.0.1.4) using valid credentials for user Pam",
+          "SubStep": "8.C.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed a successful logon on NewYork (10.0.0.4) as user MScott.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-192.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-191.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Logged on to the domain controller host NewYork (10.0.0.4) using valid credentials for user MScott ",
+          "SubStep": "16.C.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1078",
+      "TechniqueName": "Valid Accounts"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (orange indicator) called \"Commonly Used Port\" was generated for powershell.exe connecting to 192.168.0.5 on TCP 443. The detection was correlated to a parent alert identifying rcs.3aka3.doc as a suspicious, previously unseen process.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-61.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-59.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": " A General alert detection (medium severity) was generated for PowerShell behaving like a RAT.",
+              "DetectionType": "General",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-13976.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed powershell.exe connecting to 192.168.0.5 on TCP port 443.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Established C2 channel (192.168.0.5) via PowerShell payload over TCP port 443",
+          "SubStep": "3.B.3"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (red indicator) called \"Commonly Used Port\" was generated for PowerShell making a network connection to the C2 server (192.168.0.4) over port 443.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-166.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": " A General alert detection (medium severity) was generated for PowerShell behaving like a RAT.",
+              "DetectionType": "General",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-173.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-13977.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed powershell.exe making a network connection to the C2 (192.168.0.4) over port 443.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Established C2 channel (192.168.0.4) via PowerShell payload over port 443",
+          "SubStep": "11.A.13"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0011",
+          "TacticName": "Command and Control"
+        }
+      ],
+      "TechniqueId": "T1043",
+      "TechniqueName": "Commonly Used Port"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed script block with commands to timestomp kxwn.lock.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-295.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-298.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Modified the time attributes of the kxwn.lock persistence payload using PowerShell",
+          "SubStep": "12.A.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1099",
+      "TechniqueName": "Timestomp"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the creation of Draft.Zip.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-40.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Staged files for exfiltration into ZIP (Draft.zip) using PowerShell",
+          "SubStep": "2.A.5"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe creating working.zip.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-150.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Staged files for exfiltration into ZIP (working.zip in AppData directory) using PowerShell",
+          "SubStep": "9.B.5"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the file create event for MITRE-ATTACK-EVALS.HTML.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-202.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Staged collected file into directory using PowerShell",
+          "SubStep": "17.B.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0009",
+          "TacticName": "Collection"
+        }
+      ],
+      "TechniqueId": "T1074",
+      "TechniqueName": "Data Staged"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the PowerShell gwmi query for Win32_BIOS.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-287.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Checked that the BIOS version and serial number are not associated with VirtualBox or VMware using PowerShell",
+          "SubStep": "11.A.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1497",
+      "TechniqueName": "Virtualization/Sandbox Evasion"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing Compress-7Zip with arguments for encryption.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-275.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Encrypted data from the user's Downloads directory using PowerShell",
+          "SubStep": "7.B.3"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing rar.exe with command-line arguments.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-148.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Encrypted staged ZIP (working.zip in AppData directory) into working.zip (on Desktop) using rar.exe",
+          "SubStep": "9.B.6"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0010",
+          "TacticName": "Exfiltration"
+        }
+      ],
+      "TechniqueId": "T1022",
+      "TechniqueName": "Data Encrypted"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed a connection to Scranton (10.0.1.4) over port 5985. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-132.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-133.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established WinRM connection to remote host Nashua (10.0.1.4)",
+          "SubStep": "8.A.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell making a network connection to remote host NewYork (10.0.0.4) over port 5985.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-189.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established a WinRM connection to the domain controller host NewYork (10.0.0.4) ",
+          "SubStep": "16.C.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell executing the Enter-PSSession cmdlet and the subsequent network connection to the remote host Scranton (10.0.1.4).",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-226.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-341.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established a WinRM connection to the remote host Scranton (10.0.1.4) using the Golden Ticket as credentials",
+          "SubStep": "20.B.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        },
+        {
+          "TacticId": "TA0008",
+          "TacticName": "Lateral Movement"
+        }
+      ],
+      "TechniqueId": "T1028",
+      "TechniqueName": "Windows Remote Management"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the deletion of the command Registry subkey.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-65.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Modified the Registry to remove artifacts of COM hijacking",
+          "SubStep": "3.C.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the deletion of the Registry value. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-179.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Modified the Registry to remove artifacts of COM hijacking using PowerShell",
+          "SubStep": "14.A.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1112",
+      "TechniqueName": "Modify Registry"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing Get-Clipboard.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-269.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Captured clipboard contents using PowerShell",
+          "SubStep": "7.A.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0009",
+          "TacticName": "Collection"
+        }
+      ],
+      "TechniqueId": "T1115",
+      "TechniqueName": "Clipboard Data"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing Get-Process.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-246.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated current running processes using PowerShell",
+          "SubStep": "4.B.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing: $PID. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-13284.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the current process ID using PowerShell",
+          "SubStep": "4.C.5"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing Get-Process. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-279.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated processes on remote host Nashua (10.0.1.4) using PowerShell",
+          "SubStep": "8.A.3"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the PowerShell gwmi query for Win32_Process. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-290.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Checked that processes such as procexp.exe, taskmgr.exe, or wireshark.exe are not running using PowerShell",
+          "SubStep": "11.A.8"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell calling the CreateToolhelp32Snapshot API.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-310.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated running processes using the CreateToolhelp32Snapshot API",
+          "SubStep": "13.D.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell executing Get-Process.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-314.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated and tracked PowerShell processes using PowerShell",
+          "SubStep": "14.B.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1057",
+      "TechniqueName": "Process Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "python.exe payload was packed with UPX",
+          "SubStep": "8.B.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1045",
+      "TechniqueName": "Software Packing"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Used RC4 stream cipher to encrypt C2 (192.168.0.5) traffic",
+          "SubStep": "1.A.4"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Used HTTPS to encrypt C2 (192.168.0.5) traffic",
+          "SubStep": "3.B.5"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Used HTTPS to encrypt C2 (192.168.0.4) traffic",
+          "SubStep": "11.A.15"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0011",
+          "TacticName": "Command and Control"
+        }
+      ],
+      "TechniqueId": "T1032",
+      "TechniqueName": "Standard Cryptographic Protocol"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"Bypass User Account Control\" was generated due to a high integrity PowerShell spawning from control.exe. The detection was correlated to a parent alert identifying rcs.3aka3.doc as a suspicious, previously unseen process.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-59.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed elevated PowerShell payload",
+          "SubStep": "3.B.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique detection (orange indicator) called \"Bypass User Account Control\" was generated on the PowerShell callback spawned from control.exe. The detection was correlated to a parent alert for suspicious file deobfuscation via certutil.exe.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-176.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed elevated PowerShell payload",
+          "SubStep": "14.A.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0004",
+          "TacticName": "Privilege Escalation"
+        }
+      ],
+      "TechniqueId": "T1088",
+      "TechniqueName": "Bypass User Account Control"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell decompressing the ZIP via Expand-Archive and corresponding file writes.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-244.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-79.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Decompressed ZIP (SysinternalsSuite.zip) file using PowerShell",
+          "SubStep": "4.A.3"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (red indicator) called \"Deobfuscate/Decode Files or Information\" was generated due to \"suspicious file deobfuscation\" via certutil.exe.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-166.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-172.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed the certutil.exe process and corresponding file write of the kxwn.lock payload. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Decoded an embedded DLL payload to disk using certutil.exe",
+          "SubStep": "11.A.10"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell reading encoded content from the WMI class. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-316.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Read and decoded Mimikatz output from a WMI class property using PowerShell",
+          "SubStep": "14.B.6"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1140",
+      "TechniqueName": "Deobfuscate/Decode Files or Information"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe establishing a connection to NewYork (10.0.0.4) over port 389. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-129.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-131.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated remote systems using LDAP queries",
+          "SubStep": "8.A.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell executing the Get-NetDomainController cmdlet and subsequently making a network connection to the domain controller NewYork (10.0.0.4) over TCP port 389.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-322.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-187.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the domain controller host NewYork (10.0.0.4) using LDAP queries",
+          "SubStep": "16.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1018",
+      "TechniqueName": "Remote System Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though data showed the file rename event for the service executable.",
+              "DetectionType": "None",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-95.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Created a new service (javamtsup) that executes a service binary (javamtsup.exe) at system startup",
+          "SubStep": "5.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0003",
+          "TacticName": "Persistence"
+        }
+      ],
+      "TechniqueId": "T1050",
+      "TechniqueName": "New Service"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Due to execution inconsistencies Step 19 has been omitted from the evaluation results.",
+              "DetectionType": "N/A",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Reflectively injected SDelete binary into PowerShell",
+          "SubStep": "19.A.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Due to execution inconsistencies Step 19 has been omitted from the evaluation results.",
+              "DetectionType": "N/A",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Reflectively injected SDelete binary into PowerShell",
+          "SubStep": "19.B.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Due to execution inconsistencies Step 19 has been omitted from the evaluation results.",
+              "DetectionType": "N/A",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Reflectively injected SDelete binary into PowerShell",
+          "SubStep": "19.C.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1055",
+      "TechniqueName": "Process Injection"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing: $env:COMPUTERNAME.\n\n",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-13284.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the computer hostname using PowerShell",
+          "SubStep": "4.C.3"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing​ Gwmi Win32_OperatingSystem. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-13284.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the OS version using PowerShell",
+          "SubStep": "4.C.6"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the PowerShell gwmi queries for Win32_BIOS and Win32_ComputerSystem.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-287.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-289.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated computer manufacturer, model, and version information using PowerShell",
+          "SubStep": "11.A.4"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell calling the GetComputerNameEx API.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-305.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the computer name using the GetComputerNameEx API",
+          "SubStep": "13.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1082",
+      "TechniqueName": "System Information Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (orange indicator) called \"File Deletion\" was generated for sdelete64.exe deleting rcs.3aka3.doc. The detection was correlated to a parent alert identifying rcs.3aka3.doc as a suspicious, previously unseen process.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-81.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed sdelete.exe running with command-line arguments to delete the file and the subsequent file rename and delete events.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Deleted rcs.3aka3.doc on disk using SDelete",
+          "SubStep": "4.B.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (orange indicator) called \"File Deletion\" was generated for sdelete64.exe deleting Draft.Zip. The detection was correlated to a parent alert identifying rcs.3aka3.doc as a suspicious, previously unseen process. ",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-81.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed sdelete.exe running with command-line arguments to delete the file and the subsequent file rename and delete events.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Deleted Draft.zip on disk using SDelete",
+          "SubStep": "4.B.3"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (orange indicator) called \"File Deletion\" was generated for sdelete64.exe deleting SysinternalsSuite.zip. The detection was correlated to a parent alert identifying rcs.3aka3.doc as a suspicious, previously unseen process.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-81.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed sdelete.exe running with command-line arguments to delete the file and the subsequent file rename and delete events.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Deleted SysinternalsSuite.zip on disk using SDelete",
+          "SubStep": "4.B.4"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"File Deletion\" was generated when sdelete64.exe with command-line arguments was used to delete rar.exe. The detection was correlated to a parent alert for powershell.exe compressing data.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-153.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed sdelete64.exe with command-line arguments to delete rar.exe.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Deleted rar.exe on disk using SDelete",
+          "SubStep": "9.C.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"File Deletion\" was generated when sdelete64.exe with command-line arguments was used to delete Desktop\\working.zip. The detection was correlated to a parent alert for powershell.exe compressing data.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "syoder-1-RQ-9.C.1-T1107-1.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed sdelete64.exe with command-line arguments to delete rar.exe.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Deleted working.zip (from Desktop) on disk using SDelete",
+          "SubStep": "9.C.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"File Deletion\" was generated when sdelete64.exe with command-line arguments was used to delete Roaming\\working.zip. The detection was correlated to a parent alert for powershell.exe compressing data.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "syoder-1-RQ-9.C.1-T1107-1.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed sdelete64.exe with command-line arguments to delete Roaming\\working.zip.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Deleted working.zip (from AppData directory) on disk using SDelete",
+          "SubStep": "9.C.3"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"File Deletion\" was generated when cmd.exe used to delete sdelete64.exe. The detection was correlated to a parent alert for powershell.exe compressing data.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "syoder-1-RQ-9.C.1-T1107-1.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed cmd.exe deleting sdelete64.exe.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Deleted SDelete on disk using cmd.exe del command",
+          "SubStep": "9.C.4"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Due to execution inconsistencies Step 19 has been omitted from the evaluation results.",
+              "DetectionType": "N/A",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Deleted Mimikatz (m.exe) on disk using SDelete",
+          "SubStep": "19.A.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Due to execution inconsistencies Step 19 has been omitted from the evaluation results.",
+              "DetectionType": "N/A",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Deleted exfiltrated data on disk using SDelete",
+          "SubStep": "19.B.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Due to execution inconsistencies Step 19 has been omitted from the evaluation results.",
+              "DetectionType": "N/A",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Deleted staged data on disk using SDelete",
+          "SubStep": "19.C.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1107",
+      "TechniqueName": "File Deletion"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing ChildItem. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-233.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Scripted search of filesystem for document and media files using PowerShell ",
+          "SubStep": "2.A.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing ChildItem. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-284.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Scripted search of filesystem for document and media files using PowerShell ",
+          "SubStep": "9.B.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0009",
+          "TacticName": "Collection"
+        }
+      ],
+      "TechniqueId": "T1119",
+      "TechniqueName": "Automated Collection"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the file write of hostui.lnk in the Startup folder.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-1154.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Created a LNK file (hostui.lnk) in the Startup folder that executes on login",
+          "SubStep": "5.B.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Executed LNK payload (hostui.lnk) in Startup Folder on user login",
+          "SubStep": "10.B.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (orange indicator) was generated for \"Registry Run Keys / Startup Folder\" based on the Webcache subkey addition.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-166.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed powershell.exe adding Run key persistence into the Registry.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-292.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established Registry Run key persistence using PowerShell",
+          "SubStep": "11.A.11"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0003",
+          "TacticName": "Persistence"
+        }
+      ],
+      "TechniqueId": "T1060",
+      "TechniqueName": "Registry Run Keys / Startup Folder"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the addition of the DelegateExecute Registry Value.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-58.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Modified the Registry to enable COM hijacking of sdclt.exe using PowerShell",
+          "SubStep": "3.B.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the addition of the DelegateExecute Registry value.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-177.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-178.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Modified the Registry to enable COM hijacking of sdclt.exe using PowerShell",
+          "SubStep": "14.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1122",
+      "TechniqueName": "Component Object Model Hijacking"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure. ",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Executed the CryptUnprotectedData API call to decrypt Chrome passwords",
+          "SubStep": "6.A.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A General alert detection (red indicator) called \"Cross-Process Operation\" was generated due to powershell.exe injecting into lsass.exe.",
+              "DetectionType": "General",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-117.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dumped password hashes from the Windows Registry by injecting a malicious DLL into Lsass.exe",
+          "SubStep": "6.C.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure, though data showed a process event for m.exe (identified as Mimikatz) with command-line arguments and binary metadata.",
+              "DetectionType": "None",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-183.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dumped plaintext credentials using Mimikatz (m.exe)",
+          "SubStep": "14.B.4"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A General alert detection (yellow indicator) was generated for m.exe injecting into a process.",
+              "DetectionType": "General",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-196.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dumped the KRBTGT hash on the domain controller host NewYork (10.0.0.4) using Mimikatz (m.exe)",
+          "SubStep": "16.D.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0006",
+          "TacticName": "Credential Access"
+        }
+      ],
+      "TechniqueId": "T1003",
+      "TechniqueName": "Credential Dumping"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A General alert detection (blue/yellow indicators) was generated identifying rcs.3aka3.doc as a suspicious, previously unseen process.",
+              "DetectionType": "General",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-17.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed explorer.exe executing rcs.3aka3.doc.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-20.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-17.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "User Pam executed payload rcs.3aka3.doc",
+          "SubStep": "1.A.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed explorer.exe executing powershell.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-166.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "User Oscar executed payload 37486-the-shocking-truth-about-election-rigging-in-america.rtf.lnk",
+          "SubStep": "11.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        }
+      ],
+      "TechniqueId": "T1204",
+      "TechniqueName": "User Execution"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed accesschk.exe reading the Chrome database file for credentials. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-103.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Read the Chrome SQL database file to extract encrypted credentials",
+          "SubStep": "6.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0006",
+          "TacticName": "Credential Access"
+        }
+      ],
+      "TechniqueId": "T1081",
+      "TechniqueName": "Credentials in Files"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell executing Get-WmiObject  ...​ -Class AntiVirusProduct.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-13284.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated anti-virus software using PowerShell",
+          "SubStep": "4.C.7"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell executing Get-WmiObject ...​​ -Class FireWallProduct. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-13284.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated firewall software using PowerShell",
+          "SubStep": "4.C.8"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the PowerShell gwmi query for AntiVirusProduct.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-300.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated registered AV products using PowerShell",
+          "SubStep": "12.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1063",
+      "TechniqueName": "Security Software Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed rcs.3aka3.doc creating monkey.png. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-47.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dropped stage 2 payload (monkey.png) to disk",
+          "SubStep": "3.A.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A General detection alert (orange indicator) was generated for powershell.exe creating a compressed file. The detection was correlated to a parent alert identifying rcs.3aka3.doc as a suspicious, previously unseen process. ",
+              "DetectionType": "General",
+              "Modifiers": [
+                "Correlated",
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-73.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed the file write of the ZIP by PowerShell.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-76.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dropped additional tools (SysinternalsSuite.zip) to disk over C2 channel (192.168.0.5)",
+          "SubStep": "4.A.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Copied python.exe payload from a WebDAV share (192.168.0.4) to remote host Scranton (10.0.1.4)",
+          "SubStep": "8.B.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed an Executable Dropped event for python.exe creating rar.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-147.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dropped rar.exe to disk on remote host Scranton (10.0.1.4) ",
+          "SubStep": "9.A.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed an Executable Dropped event for python.exe, connected to 192.168.0.4 port 8443, creating sdelete64.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-145.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dropped sdelete.exe to disk on remote host Scranton (10.0.1.4) ",
+          "SubStep": "9.A.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A General alert detection (yellow indicator) was generated for \"Executable Dropped,\" which showed the download and file write of m.exe into the System32 folder via PowerShell.",
+              "DetectionType": "General",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-181.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed the file create event for m.exe into the System32 folder.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Downloaded and dropped Mimikatz (m.exe) to disk",
+          "SubStep": "14.B.3"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique detection called \"Executable Dropped\" was generated for wsmprvhost.exe creating m.exe (identified as Mimikatz by the file metadata).",
+              "DetectionType": "Technique",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-196.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-195.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed a file write event for m.exe in the System32 directory.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Dropped Mimikatz (m.exe) to disk on the domain controller host NewYork (10.0.0.4) over a WinRM connection",
+          "SubStep": "16.D.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0011",
+          "TacticName": "Command and Control"
+        }
+      ],
+      "TechniqueId": "T1105",
+      "TechniqueName": "Remote File Copy"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell extracting and executing the code embedded within monkey.png. The detection was correlated to a parent alert identifying rcs.3aka3.doc as a suspicious, previously unseen process.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-56.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Embedded PowerShell payload in monkey.png using steganography",
+          "SubStep": "3.A.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Encoded and wrote Mimikatz output to a WMI class property using PowerShell",
+          "SubStep": "14.B.5"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell appending the GIF file header to the compressed file.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-334.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Prepended the GIF file header to a compressed staging file using PowerShell",
+          "SubStep": "17.C.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1027",
+      "TechniqueName": "Obfuscated Files or Information"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed python.exe spawned by PSEXESVC.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-142.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed python.exe using PSExec",
+          "SubStep": "8.C.3"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed javamtsup.exe with the parent process services.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-159.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed persistent service (javamtsup) on system startup",
+          "SubStep": "10.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        }
+      ],
+      "TechniqueId": "T1035",
+      "TechniqueName": "Service Execution"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the PowerShell gwmi query for Win32_PnPEntity.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-288.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated devices/adapters to check for presence of VirtualBox driver(s) using PowerShell",
+          "SubStep": "11.A.5"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1120",
+      "TechniqueName": "Peripheral Device Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing CopyFromScreen from System.Drawing.dll.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Vendor stated that more information for this behavior would be available using their NanoOS capability, which did not run under the evaluation's Hyper-Visor. ",
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-265.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Captured and saved screenshots using PowerShell",
+          "SubStep": "7.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0009",
+          "TacticName": "Collection"
+        }
+      ],
+      "TechniqueId": "T1113",
+      "TechniqueName": "Screen Capture"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Read and downloaded ZIP (Draft.zip) over C2 channel (192.168.0.5 over TCP port 1234)",
+          "SubStep": "2.B.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Read and downloaded ZIP (working.zip on Desktop) over C2 channel (192.168.0.5 over TCP port 8443)",
+          "SubStep": "9.B.8"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0010",
+          "TacticName": "Exfiltration"
+        }
+      ],
+      "TechniqueId": "T1041",
+      "TechniqueName": "Exfiltration Over Command and Control Channel"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (red incator) called \"WMI Process Created\" was generated for WmiPrvSE.exe executing powershell.exe. The detection was correlated to a parent alert for suspicious file deobfuscation via certutil.exe.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-180.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed WmiPrvSE.exe executing powershell.exe.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Created and executed a WMI class using PowerShell",
+          "SubStep": "14.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        }
+      ],
+      "TechniqueId": "T1047",
+      "TechniqueName": "Windows Management Instrumentation"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (blue indicator) called \"Create Account\" was generated for wsmprovhost.exe spawning net.exe with the command-line arguments to add the new user Toby.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-224.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed wsmprovhost.exe spawning net.exe with the command-line arguments to add the new user Toby.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Added a new user to the remote host Scranton (10.0.1.4) using net.exe",
+          "SubStep": "20.B.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0003",
+          "TacticName": "Persistence"
+        }
+      ],
+      "TechniqueId": "T1136",
+      "TechniqueName": "Create Account"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Used unicode right-to-left override (RTLO) character to obfuscate file name rcs.3aka3.doc (originally cod.3aka.scr)",
+          "SubStep": "1.A.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed hash of accesschk.exe which can be used to verify it is not the legitimate Sysinternals tool.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-100.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Masqueraded a Chrome password dump tool as accesscheck.exe, a legitimate Sysinternals tool",
+          "SubStep": "6.A.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1036",
+      "TechniqueName": "Masquerading"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed an SMB session from Nashua (10.0.1.6) to Scranton (10.0.1.4) over port 135. The detection was correlated to a parent alert identifying rcs.3aka3.doc as a suspicious, previously unseen process.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-138.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established SMB session to remote host Scranton's (10.0.1.4) IPC$ share using PsExec",
+          "SubStep": "8.C.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0008",
+          "TacticName": "Lateral Movement"
+        }
+      ],
+      "TechniqueId": "T1077",
+      "TechniqueName": "Windows Admin Shares"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (green indicator) called \"WMI Event Consumer\" was generated due to the WMI subscription creation. The detection was correlated to a parent alert for WmiPrvSE.exe executing powershell.exe.",
+              "DetectionType": "Technique",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Alert",
+                "Configuration Change (Detections)",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-185.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "A Technique alert detection (green indicator) called \"WMI Event Filter\" was generated due to the WMI subscription creation. The detection was correlated to a parent alert for WmiPrvSE.exe executing powershell.exe.",
+              "DetectionType": "Technique",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Alert",
+                "Configuration Change (Detections)",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-185.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed the PowerShell commands to generate the WMI subscription.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-319.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established WMI event subscription persistence using PowerShell",
+          "SubStep": "15.A.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed wmiprvse.exe executing the PowerShell stager.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-222.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed WMI persistence on user login",
+          "SubStep": "20.A.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0003",
+          "TacticName": "Persistence"
+        }
+      ],
+      "TechniqueId": "T1084",
+      "TechniqueName": "Windows Management Instrumentation Event Subscription"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing the NetUserGetGroups API.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-258.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-13284.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated user's domain group membership via the NetUserGetGroups API",
+          "SubStep": "4.C.9"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing the NetUserGetLocalGroups API. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-13284.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-260.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated user's local group membership via the NetUserGetLocalGroups API",
+          "SubStep": "4.C.11"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1069",
+      "TechniqueName": "Permission Groups Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed net.exe with command-line arguments to connect to a OneDrive URL as well as net.exe subsequently making a network connection to public IPs over port 443. The detection was correlated to a parent alert for suspicious file deobfuscation via certutil.exe.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-209.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Mapped a network drive to an online OneDrive account using PowerShell",
+          "SubStep": "18.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1102",
+      "TechniqueName": "Web Service"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) for \"PowerShell\" was generated when cmd.exe spawned powershell.exe. The detection was correlated to a parent alert identifying rcs.3aka3.doc as a suspicious, previously unseen process.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert",
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-27.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed powershell.exe spawning from cmd.exe.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Spawned interactive powershell.exe",
+          "SubStep": "1.B.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed a new powershell.exe spawning from powershell.exe. The detection was correlated to a parent alert identifying rcs.3aka3.doc as a suspicious, previously unseen process.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-73.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Spawned interactive powershell.exe",
+          "SubStep": "4.A.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed python.exe executing powershell.exe​. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-150.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Spawned interactive powershell.exe",
+          "SubStep": "9.B.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe spawned from a PowerShell stager.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-166.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-293.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed PowerShell stager payload",
+          "SubStep": "11.A.12"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"PowerShell\" was generated due to a SYSTEM-level PowerShell spawning from wmiprvse.exe.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-222.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed PowerShell payload from WMI event subscription persistence",
+          "SubStep": "20.A.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        }
+      ],
+      "TechniqueId": "T1086",
+      "TechniqueName": "PowerShell"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed file reads of C:\\Users\\Pam\\*. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-42.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Recursively collected files found in C:\\Users\\Pam\\ using PowerShell",
+          "SubStep": "2.A.3"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed Powershell.exe reading files from C:\\Users\\pam\\Downloads.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-122.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-126.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Read data in the user's Downloads directory using PowerShell",
+          "SubStep": "7.B.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed file reads of C:\\Users\\Pam\\*. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-151.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Recursively collected files found in C:\\Users\\Pam\\ using PowerShell",
+          "SubStep": "9.B.4"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the file read of MITRE-ATTACK-EVALS.HTML. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-201.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Read and collected a local file using PowerShell",
+          "SubStep": "17.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0009",
+          "TacticName": "Collection"
+        }
+      ],
+      "TechniqueId": "T1005",
+      "TechniqueName": "Data from Local System"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed file create event for a $RandomFileName.pfx file by powershell.exe. ",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-109.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Exported a local certificate to a PFX file using PowerShell",
+          "SubStep": "6.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0006",
+          "TacticName": "Credential Access"
+        }
+      ],
+      "TechniqueId": "T1145",
+      "TechniqueName": "Private Keys"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed outlook.exe spawning from svchost.exe, which is indicative of programmatic access to Outlook emails.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-199.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-198.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Dumped messages from the local Outlook inbox using PowerShell",
+          "SubStep": "17.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0009",
+          "TacticName": "Collection"
+        }
+      ],
+      "TechniqueId": "T1114",
+      "TechniqueName": "Email Collection"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing ChildItem. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-233.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Searched filesystem for document and media files using PowerShell ",
+          "SubStep": "2.A.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing $env:TEMP.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-13284.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated user's temporary directory path using PowerShell",
+          "SubStep": "4.C.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing ChildItem.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-284.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Searched filesystem for document and media files using PowerShell",
+          "SubStep": "9.B.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell executing Get-Item for the current path.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-291.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Checked that the payload is not inside a folder path that contains \"sample\" or is the length of a hash value using PowerShell",
+          "SubStep": "11.A.9"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the PowerShell enumeration of System32. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-298.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-295.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the System32 directory using PowerShell",
+          "SubStep": "12.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1083",
+      "TechniqueName": "File and Directory Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PoweShell Copy-Item to remote a remote adversary WebDav network share (192.168.0.4) as well as the network share connection to 192.168.0.4:80.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-128.png"
+                },
+                {
+                  "ScreenshotName": "ReaQta-APT29-275.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Exfiltrated collection (OfficeSupplies.7z) to WebDAV network share using PowerShell",
+          "SubStep": "7.B.4"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell executing Copy-Item to exfiltrate data to a previously mapped OneDrive account.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-336.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Exfiltrated staged collection to an online OneDrive account using PowerShell",
+          "SubStep": "18.A.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0010",
+          "TacticName": "Exfiltration"
+        }
+      ],
+      "TechniqueId": "T1048",
+      "TechniqueName": "Exfiltration Over Alternative Protocol"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Used HTTPS to transport C2 (192.168.0.5) traffic",
+          "SubStep": "3.B.4"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Used HTTPS to transport C2 (192.168.0.4) traffic",
+          "SubStep": "11.A.14"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0011",
+          "TacticName": "Command and Control"
+        }
+      ],
+      "TechniqueId": "T1071",
+      "TechniqueName": "Standard Application Layer Protocol"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing: $env:USERDOMAIN. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-13284.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the current domain name using PowerShell",
+          "SubStep": "4.C.4"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe gwmi query for Win32_ComputerSystem.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-289.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Checked that the computer is joined to a domain using PowerShell",
+          "SubStep": "11.A.7"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell calling the NetWkstaGetInfo API.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-306.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated the domain name using the NetWkstaGetInfo API",
+          "SubStep": "13.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1016",
+      "TechniqueName": "System Network Configuration Discovery"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (red indicator) called \"Rundll32\" was generated due to rundll32.exe executing kxwn.lock. ",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-223.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed rundll32.exe executing kxwn.lock",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Executed Run key persistence payload on user login using RunDll32",
+          "SubStep": "20.A.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        }
+      ],
+      "TechniqueId": "T1085",
+      "TechniqueName": "Rundll32"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing the schemas ADS with Get-Content and IEX.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-286.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Executed an alternate data stream (ADS) using PowerShell",
+          "SubStep": "11.A.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1096",
+      "TechniqueName": "NTFS File Attributes"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed powershell.exe compressing via Compress-Archive. ",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-233.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Compressed and stored files into ZIP (Draft.zip) using PowerShell",
+          "SubStep": "2.A.4"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed the file write event for OfficeSupplies.7z.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-127.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Compressed data from the user's Downloads directory into a ZIP file (OfficeSupplies.7z) using PowerShell",
+          "SubStep": "7.B.2"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (yellow indicator) called \"Data Compressed\" was generated due to powershell.exe executing rar.exe with command-line arguments indicative of compression. ",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-148.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed powershell.exe executing rar.exe with command-line arguments.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Though no image was captured, MITRE confirmed that the vendor has the capability to show available telemetry in a separate view."
+              ],
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Compressed staged ZIP (working.zip in AppData directory) into working.zip (on Desktop) using rar.exe",
+          "SubStep": "9.B.7"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell compressing collection via the ZipFile.CreateFromDirectory .NET method.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-333.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Compressed a staging directory using PowerShell",
+          "SubStep": "17.C.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0010",
+          "TacticName": "Exfiltration"
+        }
+      ],
+      "TechniqueId": "T1002",
+      "TechniqueName": "Data Compressed"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed script block with registry query for installed software.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-302.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated installed software via the Registry (Wow6432 Uninstall key) using PowerShell",
+          "SubStep": "12.C.1"
+        },
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed script block with registry query for installed software.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-302.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Enumerated installed software via the Registry (Uninstall key) using PowerShell",
+          "SubStep": "12.C.2"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0007",
+          "TacticName": "Discovery"
+        }
+      ],
+      "TechniqueId": "T1012",
+      "TechniqueName": "Query Registry"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Manipulated the token of the PowerShell payload via the CreateProcessWithToken API",
+          "SubStep": "10.B.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0005",
+          "TacticName": "Defense Evasion"
+        }
+      ],
+      "TechniqueId": "T1134",
+      "TechniqueName": "Access Token Manipulation"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed cmd.exe spawning from rcs.3aka3.doc​. The detection was correlated to a parent alert identifying rcs.3aka3.doc as a suspicious, previously unseen process.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [
+                "Correlated"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-24.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Spawned interactive cmd.exe",
+          "SubStep": "1.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0002",
+          "TacticName": "Execution"
+        }
+      ],
+      "TechniqueId": "T1059",
+      "TechniqueName": "Command-Line Interface"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "A Technique alert detection (blue/yellow indicators) for \"Uncommonly Used Port\" was generated for the rcs.3aka3.doc process connecting to 192.168.0.5 on TCP port 1234.",
+              "DetectionType": "Technique",
+              "Modifiers": [
+                "Alert"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-19.png"
+                }
+              ]
+            },
+            {
+              "DetectionNote": "Telemetry showed the rcs.3aka3.doc process connecting to 192.168.0.5 on TCP port 1234.",
+              "DetectionType": "Telemetry",
+              "Modifiers": [],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-15.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Established C2 channel (192.168.0.5) via rcs.3aka3.doc payload over TCP port 1234",
+          "SubStep": "1.A.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0011",
+          "TacticName": "Command and Control"
+        }
+      ],
+      "TechniqueId": "T1065",
+      "TechniqueName": "Uncommonly Used Port"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "No detection capability demonstrated for this procedure.",
+              "DetectionType": "None",
+              "Modifiers": []
+            }
+          ],
+          "Procedure": "Created Kerberos Golden Ticket using Invoke-Mimikatz",
+          "SubStep": "20.B.1"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0008",
+          "TacticName": "Lateral Movement"
+        }
+      ],
+      "TechniqueId": "T1097",
+      "TechniqueName": "Pass the Ticket"
+    },
+    {
+      "Steps": [
+        {
+          "Detections": [
+            {
+              "DetectionNote": "Telemetry showed PowerShell calling the GetAsyncKeyState API.",
+              "DetectionType": "Telemetry",
+              "Footnotes": [
+                "Vendor stated that more information for this behavior would be available using their NanoOS capability, which did not run under the evaluation's Hyper-Visor. ",
+                "PowerShell script block logging was enabled after the start of the evaluation so the detection is identified as a Detection Configuration Change."
+              ],
+              "Modifiers": [
+                "Configuration Change (Detections)"
+              ],
+              "Screenshots": [
+                {
+                  "ScreenshotName": "ReaQta-APT29-273.png"
+                }
+              ]
+            }
+          ],
+          "Procedure": "Captured user keystrokes using the GetAsyncKeyState API",
+          "SubStep": "7.A.3"
+        }
+      ],
+      "Tactics": [
+        {
+          "TacticId": "TA0009",
+          "TacticName": "Collection"
+        }
+      ],
+      "TechniqueId": "T1056",
+      "TechniqueName": "Input Capture"
+    }
+  ]
+}
