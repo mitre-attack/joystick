@@ -8,17 +8,17 @@ from app.utility.base_svc import BaseService
 class DataService(BaseService):
     adversary_path = os.path.abspath('data/evaluations/')
     procedures_path = os.path.abspath('data/procedures/')
-    apt29_categories = ['Telemetry', 'None', 'General', 'Technique', 'MSSP', 'N/A', 'Tactic']
+    apt29_categories = ['None', 'Telemetry', 'MSSP', 'General', 'Tactic', 'Technique', 'N/A']
     apt29_modifiers = {"None", "Alert", "Correlated", "Delayed (Manual)", "Delayed (Processing)", "Host Interrogation",
                        "Residual Artifact",
                        "Configuration Change (Detections)",
-                       "Configuration Change (UX)"}
+                       "Configuration Change (UX)", "Innovative"}
 
     mod_organized = {'datasets': {"None": [], "Alert": [], "Correlated": [],
                      "Delayed (Manual)": [], "Delayed (Processing)": [], "Host Interrogation": [],
                                   "Residual Artifact": [], "Configuration Change (Detections)": [],
-                                  "Configuration Change (UX)": []}, 'labels': []}
-    organized = {'datasets': {'None': [], 'Telemetry': [], 'General': [], 'Technique': [], 'MSSP': [], 'N/A': [], 'Tactic': []},
+                                  "Configuration Change (UX)": [], "Innovative": []}, 'labels': []}
+    organized = {'datasets': {'None': [], 'Telemetry': [], 'General': [], 'Tactic': [], 'Technique': [], 'MSSP': [], 'N/A': []},
                  'labels': []}
 
     def __init__(self):
@@ -123,7 +123,9 @@ class DataService(BaseService):
         eval_name = criteria['eval']
         data = self.ram['evaluations'][eval_name]['data'][criteria['data']]
         tmp_org = copy.deepcopy(self.organized)
-        for key in self.apt29_categories:
+        del tmp_org['datasets']['N/A']
+        apt29_cat = copy.deepcopy(self.apt29_categories)
+        for key in apt29_cat[:6]:
             if key in data.keys():
                 for mod in self.apt29_modifiers:
                     if mod not in data[key].keys():

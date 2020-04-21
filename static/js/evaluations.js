@@ -22,8 +22,7 @@ function updateEvalSelect(data) {
 function getEvalInfo(eval_name) {
         restRequest('POST', {'index': 'step_data', 'eval': eval_name, 'data':'step'}, build_step_chart);
         restRequest('POST', {'index': 'sub_step_data', 'eval': eval_name, 'data':'substep'}, build_sub_step_chart);
-        restRequest('POST', {'index': 'mod_data', 'eval': eval_name, 'data':'modifier_detections'}, build_donuts);
-        get_tactic_data(eval_name);
+        //restRequest('POST', {'index': 'mod_data', 'eval': eval_name, 'data':'modifier_detections'}, build_donuts);
 }
 
 
@@ -37,7 +36,7 @@ function load_charts() {
 
 function build_step_chart(data){
     var ctx = document.getElementById("stepChart");
-    let step_bar_colors_APT29 = {None: '#185b85', Telemetry: '#007a9a', General: '#ffbb05', Technique: '#00978d', MSSP: '#05ae6a', 'N/A': '#95bd2a'}
+    let step_bar_colors_APT29 = {None: '#185b85', Telemetry: '#007a9a', General: '#ffbb05', Technique: '#00978d', MSSP: '#05ae6a', Tactic: '#95bd2a'}
 
     let datasets = [];
 
@@ -57,7 +56,7 @@ function build_step_chart(data){
 
 function build_sub_step_chart(data){
     var ctx = document.getElementById("subStepChart");
-    let step_bar_colors_APT29 = {None: '#185b85', Telemetry: '#007a9a', General: '#ffbb05', Technique: '#00978d', MSSP: '#05ae6a', 'N/A': '#95bd2a'}
+    let step_bar_colors_APT29 = {None: '#185b85', Telemetry: '#007a9a', General: '#ffbb05', Technique: '#00978d', MSSP: '#05ae6a', Tactic: '#95bd2a'}
 
     let datasets = [];
     var i;
@@ -101,7 +100,7 @@ function build_chart(ctx, labels, datasets) {
 var MODIFIERS = ["None",  "Alert", "Correlated", "Delayed (Manual)", "Delayed (Processing)", "Host Interrogation",
         "Residual Artifact",
         "Configuration Change (Detections)",
-        "Configuration Change (UX)"]
+        "Configuration Change (UX)", "Innovative"]
 let modifier_colors = ["#185b85", "#003f5c", "#374c80", "#7a5195", "#7a5195", "#bc5090", "#ef5675", "#ff764a", "#ff764a", "#ffa600"];
 
 function build_donut_chart(key, value) {
