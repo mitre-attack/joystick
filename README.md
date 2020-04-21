@@ -18,7 +18,7 @@ Then start the server.
 ```
 python joystick.py
 ```
-Once the server has started, point your browser to localhost:8000, and start browsing through evaluation results.
+Once the server has started, point your browser to localhost:8080, and start browsing through evaluation results.
 
 ## Intended Use
 Please note that Joystick is currently intended to be used as a local, single user application. 
