@@ -10,7 +10,7 @@ class FileService(BaseService):
 
     @staticmethod
     async def load_json_file(file):
-        with open(file) as json_file:
+        with open(file, encoding="utf8") as json_file:
             data = json.load(json_file)
         return data
 

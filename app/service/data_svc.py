@@ -1,7 +1,7 @@
 import copy
 import os
 import ntpath
-from pandas import json_normalize
+from pandas.io.json import json_normalize
 from app.utility.base_svc import BaseService
 
 
