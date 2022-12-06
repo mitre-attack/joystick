@@ -16,9 +16,10 @@ def setup_logger(level=logging.DEBUG):
                         datefmt='%Y-%m-%d %H:%M:%S')
     for logger_name in logging.root.manager.loggerDict.keys():
         if logger_name in ('aiohttp.server', 'asyncio'):
+            logging.getLogger(logger_name).setLevel(logging.INFO)
             continue
         else:
-            logging.getLogger(logger_name).setLevel(100)
+            logging.getLogger(logger_name).setLevel(logging.DEBUG)
 
 
 async def init(address, port, services):
